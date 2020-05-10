@@ -4,12 +4,11 @@ import com.stepanov.smetaserver.model.Estimate;
 import com.stepanov.smetaserver.service.EstimateServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
 
 @RestController
 @RequestMapping("/estimates")
@@ -33,12 +32,12 @@ public class EstimateController {
         return new ResponseEntity<>(estimateService.findById(id), HttpStatus.OK);
     }
 
-    @PostMapping(consumes = APPLICATION_JSON_UTF8_VALUE)
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Estimate> save(@RequestBody Estimate estimate) {
         return new ResponseEntity<>(estimateService.saveOrUpdate(estimate), HttpStatus.CREATED);
     }
 
-    @PutMapping(consumes = APPLICATION_JSON_UTF8_VALUE)
+    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Estimate> update(@RequestBody Estimate estimate) {
         return new ResponseEntity<>(estimateService.saveOrUpdate(estimate), HttpStatus.OK);
     }

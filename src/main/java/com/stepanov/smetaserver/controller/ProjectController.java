@@ -8,10 +8,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
 
 @RestController
 @RequestMapping("/projects")
@@ -46,12 +45,12 @@ public class ProjectController {
         return new ResponseEntity<>(projectService.findById(id), HttpStatus.OK);
     }
 
-    @PostMapping(consumes = APPLICATION_JSON_UTF8_VALUE)
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Project> save(@RequestBody Project project) {
         return new ResponseEntity<>(projectService.saveOrUpdate(project), HttpStatus.CREATED);
     }
 
-    @PutMapping(consumes = APPLICATION_JSON_UTF8_VALUE)
+    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Project> update(@RequestBody Project project) {
         return new ResponseEntity<>(projectService.saveOrUpdate(project), HttpStatus.OK);
     }

@@ -4,12 +4,11 @@ import com.stepanov.smetaserver.model.Payment;
 import com.stepanov.smetaserver.service.PaymentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
 
 @RestController
 @RequestMapping("/payments")
@@ -32,12 +31,12 @@ public class PaymentController {
         return new ResponseEntity<>(paymentService.findPaymentUpById(id), HttpStatus.OK);
     }
 
-    @PostMapping(consumes = APPLICATION_JSON_UTF8_VALUE)
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Payment> save(@RequestBody Payment payment) {
         return new ResponseEntity<>(paymentService.saveOrUpdate(payment), HttpStatus.CREATED);
     }
 
-    @PutMapping(consumes = APPLICATION_JSON_UTF8_VALUE)
+    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Payment> update(@RequestBody Payment payment) {
         return new ResponseEntity<>(paymentService.saveOrUpdate(payment), HttpStatus.OK);
     }

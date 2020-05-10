@@ -4,12 +4,11 @@ import com.stepanov.smetaserver.model.MarkUp;
 import com.stepanov.smetaserver.service.MarkUpServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
 
 @RestController
 @RequestMapping("/markUps")
@@ -30,12 +29,12 @@ public class MarkUpController {
         return new ResponseEntity<>(markUpService.findMarkUpById(id), HttpStatus.OK);
     }
 
-    @PostMapping(consumes = APPLICATION_JSON_UTF8_VALUE)
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<MarkUp> save(@RequestBody MarkUp markUp) {
         return new ResponseEntity<>(markUpService.saveOrUpdate(markUp), HttpStatus.CREATED);
     }
 
-    @PutMapping(consumes = APPLICATION_JSON_UTF8_VALUE)
+    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<MarkUp> update(@RequestBody MarkUp markUp) {
         return new ResponseEntity<>(markUpService.saveOrUpdate(markUp), HttpStatus.OK);
     }
