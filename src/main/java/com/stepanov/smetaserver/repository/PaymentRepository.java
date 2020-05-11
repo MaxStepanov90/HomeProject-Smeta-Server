@@ -11,5 +11,7 @@ import java.util.List;
 public interface PaymentRepository extends JpaRepository<Payment, Long> {
     @Query("From Payment p WHERE p.projectId=:id")
     List<Payment> findPaymentsByProjectId(Long id);
+    @Query("From Payment p WHERE p.estimateId=:id")
+    List<Payment> findPaymentsByEstimateId(Long id);
 
 }

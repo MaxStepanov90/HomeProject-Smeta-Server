@@ -7,7 +7,6 @@ import java.util.List;
 public interface PaymentService {
 
     List<Payment> findAllPaymentsByProjectId(Long id);
-    Payment findPaymentUpById(Long id);
-    Payment saveOrUpdate(Payment payment);
-    String deleteById(Long id);
+    List<Payment> findAllPaymentsByEstimateId(Long id);
+    Payment save(Payment payment);
 }

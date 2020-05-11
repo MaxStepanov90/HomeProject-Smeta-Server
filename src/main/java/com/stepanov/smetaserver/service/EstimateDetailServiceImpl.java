@@ -15,12 +15,15 @@ import java.util.List;
 public class EstimateDetailServiceImpl implements EstimateDetailService {
 
     private final EstimateDetailRepository estimateDetailRepository;
+    private final EstimateServiceImpl estimateService;
     private final MarkUpServiceImpl markUpService;
 
     @Autowired
     public EstimateDetailServiceImpl(EstimateDetailRepository estimateDetailRepository,
+                                     EstimateServiceImpl estimateService,
                                      MarkUpServiceImpl markUpService) {
         this.estimateDetailRepository = estimateDetailRepository;
+        this.estimateService = estimateService;
         this.markUpService = markUpService;
     }
 
@@ -41,26 +44,19 @@ public class EstimateDetailServiceImpl implements EstimateDetailService {
 
     @Override
     public EstimateDetail save(EstimateDetail estimateDetail) {
-        String category = estimateDetail.getCategory();
-        double markUpPercent = markUpService.findMarkUpPercentByMarkUpName(category);
-        log.info("save new estimateDetail by category: {} with markUp percent: {}", category, markUpPercent);
-        EstimateDetail newEstimateDetail = EstimateDetail.builder()
-                .name(estimateDetail.getName())
-                .unit(estimateDetail.getUnit())
-                .quantity(estimateDetail.getQuantity())
-                .price(estimateDetail.getPrice())
-                .cost(calcCost(estimateDetail.getQuantity(), estimateDetail.getPrice()))
-                .priceClient(calcPriceClient(estimateDetail.getPrice(), markUpPercent))
-                .costClient(calcCostClient(estimateDetail.getPrice(), estimateDetail.getQuantity(), markUpPercent))
-                .category(estimateDetail.getCategory())
-                .complete(false)
-                .estimateId(estimateDetail.getEstimateId())
-                .build();
+        double markUpPercent = markUpService.findMarkUpPercentByMarkUpName(estimateDetail.getCategory());
+        EstimateDetail newEstimateDetail = buildNewEstimateDetail(estimateDetail, markUpPercent);
+        log.info("save new estimateDetail name: {} cost: {} by category: {} with markUp percent: {}",
+                newEstimateDetail.getName(), newEstimateDetail.getCostClient(),
+                newEstimateDetail.getCategory(), markUpPercent);
+        estimateService.updateEstimateCost(newEstimateDetail.getEstimateId(),newEstimateDetail.getCostClient());
         return estimateDetailRepository.save(newEstimateDetail);
     }
 
     @Override
     public EstimateDetail update(EstimateDetail estimateDetail) {
+        estimateService.updateEstimatePerformance(estimateDetail.getEstimateId(),
+                estimateDetail.isComplete(),estimateDetail.getCostClient());
         log.info("update estimateDetail: {} category: {} toggleComplete: {}",
                 estimateDetail.getName(), estimateDetail.getCategory(), estimateDetail.isComplete());
         return estimateDetailRepository.save(estimateDetail);
@@ -76,6 +72,21 @@ public class EstimateDetailServiceImpl implements EstimateDetailService {
             e.printStackTrace();
         }
         return jsonObject.toString();
+    }
+
+    public EstimateDetail buildNewEstimateDetail(EstimateDetail estimateDetail, double markUpPercent) {
+        return EstimateDetail.builder()
+                .name(estimateDetail.getName())
+                .unit(estimateDetail.getUnit())
+                .quantity(estimateDetail.getQuantity())
+                .price(estimateDetail.getPrice())
+                .cost(calcCost(estimateDetail.getQuantity(), estimateDetail.getPrice()))
+                .priceClient(calcPriceClient(estimateDetail.getPrice(), markUpPercent))
+                .costClient(calcCostClient(estimateDetail.getPrice(), estimateDetail.getQuantity(), markUpPercent))
+                .category(estimateDetail.getCategory())
+                .complete(false)
+                .estimateId(estimateDetail.getEstimateId())
+                .build();
     }
 
     public double calcCost(double quantity, double price) {

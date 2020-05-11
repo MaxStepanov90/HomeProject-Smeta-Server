@@ -14,4 +14,10 @@ public interface EstimateService {
     Estimate saveOrUpdate(Estimate estimate);
 
     String deleteById(Long id);
+
+    void updateEstimateCost(Long estimateId, double sum);
+
+    void updateEstimatePerformance(Long estimateId, boolean isComplete, double sum);
+
+    void updateEstimatePayment(Long estimateId, double sum);
 }

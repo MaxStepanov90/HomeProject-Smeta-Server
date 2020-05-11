@@ -25,24 +25,13 @@ public class PaymentController {
     public ResponseEntity<List<Payment>> findPaymentsByProjectId(@PathVariable Long id) {
         return new ResponseEntity<>(paymentService.findAllPaymentsByProjectId(id), HttpStatus.OK);
     }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<Payment> findById(@PathVariable Long id) {
-        return new ResponseEntity<>(paymentService.findPaymentUpById(id), HttpStatus.OK);
+    @GetMapping("/estimateId/{id}")
+    public ResponseEntity<List<Payment>> findPaymentsByEstimateId(@PathVariable Long id) {
+        return new ResponseEntity<>(paymentService.findAllPaymentsByEstimateId(id), HttpStatus.OK);
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Payment> save(@RequestBody Payment payment) {
-        return new ResponseEntity<>(paymentService.saveOrUpdate(payment), HttpStatus.CREATED);
-    }
-
-    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Payment> update(@RequestBody Payment payment) {
-        return new ResponseEntity<>(paymentService.saveOrUpdate(payment), HttpStatus.OK);
-    }
-
-    @DeleteMapping("{id}")
-    public ResponseEntity<String> deleteById(@PathVariable Long id) {
-        return new ResponseEntity<>(paymentService.deleteById(id), HttpStatus.OK);
+        return new ResponseEntity<>(paymentService.save(payment), HttpStatus.CREATED);
     }
 }
