@@ -52,8 +52,7 @@ public class EstimateServiceImpl implements EstimateService {
     public void updateEstimateCost(Long estimateId, double sum) {
         Estimate foundEstimate = estimateRepository.findById(estimateId).get();
         foundEstimate.setEstimateCost(foundEstimate.getEstimateCost() + sum);
-        log.info("update estimate: {} estimateCost: {}",
-                foundEstimate.getEstimateName(), foundEstimate.getEstimateCost());
+        log.info("updateEstimateCost estimate: {} estimateCost: {}", foundEstimate.getEstimateName(), foundEstimate.getEstimateCost());
         estimateRepository.save(foundEstimate);
     }
     @Override
@@ -63,8 +62,8 @@ public class EstimateServiceImpl implements EstimateService {
                 foundEstimate.getEstimatePerformance() - sum);
         foundEstimate.setEstimateNotPayment(isComplete ? foundEstimate.getEstimateNotPayment() + sum :
                 foundEstimate.getEstimateNotPayment() - sum);
-        log.info("update estimate: {} estimatePerformance: {} estimateNotPayment: {}", foundEstimate.getEstimateName(),
-                foundEstimate.getEstimatePerformance(), foundEstimate.getEstimateNotPayment());
+        log.info("updateEstimatePerformance estimate: {} estimatePerformance: {} estimateNotPayment: {}",
+                foundEstimate.getEstimateName(), foundEstimate.getEstimatePerformance(), foundEstimate.getEstimateNotPayment());
         estimateRepository.save(foundEstimate);
     }
     @Override
@@ -73,8 +72,8 @@ public class EstimateServiceImpl implements EstimateService {
         foundEstimate.setEstimateNotPayment(foundEstimate.getEstimatePerformance() -
                 (foundEstimate.getEstimatePayment() + sum));
         foundEstimate.setEstimatePayment(foundEstimate.getEstimatePayment() + sum);
-        log.info("update estimate: {} estimatePayment: {} estimateNotPayment: {}", foundEstimate.getEstimateName(),
-                foundEstimate.getEstimatePayment(), foundEstimate.getEstimateNotPayment());
+        log.info("updateEstimatePayment estimate: {} estimatePayment: {} estimateNotPayment: {}",
+                foundEstimate.getEstimateName(), foundEstimate.getEstimatePayment(), foundEstimate.getEstimateNotPayment());
         estimateRepository.save(foundEstimate);
     }
 }
