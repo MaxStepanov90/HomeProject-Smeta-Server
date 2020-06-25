@@ -44,6 +44,7 @@ public class EstimateDetailServiceImpl implements EstimateDetailService {
 
     @Override
     public EstimateDetail save(EstimateDetail estimateDetail) {
+        log.info("new estimateDetail: {}", estimateDetail);
         double markUpPercent = markUpService.findMarkUpPercentByMarkUpName(estimateDetail.getCategory());
         EstimateDetail newEstimateDetail = buildNewEstimateDetail(estimateDetail, markUpPercent);
         log.info("save new estimateDetail name: {} cost: {} by category: {} with markUp percent: {}",

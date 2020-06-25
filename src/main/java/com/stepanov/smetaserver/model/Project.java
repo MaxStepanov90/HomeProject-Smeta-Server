@@ -18,10 +18,10 @@ public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String projectContract;
-    private String projectName;
-    private String projectAddress;
-    private LocalDate projectCreationDate;
-    private String projectOwner;
-    private String projectDescription;
+    private String contract;
+    private String name;
+    private String address;
+    private LocalDate creationDate;
+    private String owner;
+    private String description;
 }

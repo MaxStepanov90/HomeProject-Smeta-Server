@@ -51,29 +51,29 @@ public class EstimateServiceImpl implements EstimateService {
     @Override
     public void updateEstimateCost(Long estimateId, double sum) {
         Estimate foundEstimate = estimateRepository.findById(estimateId).get();
-        foundEstimate.setEstimateCost(foundEstimate.getEstimateCost() + sum);
-        log.info("updateEstimateCost estimate: {} estimateCost: {}", foundEstimate.getEstimateName(), foundEstimate.getEstimateCost());
+        foundEstimate.setCost(foundEstimate.getCost() + sum);
+        log.info("updateEstimateCost estimate: {} estimateCost: {}", foundEstimate.getName(), foundEstimate.getCost());
         estimateRepository.save(foundEstimate);
     }
     @Override
     public void updateEstimatePerformance(Long estimateId, boolean isComplete, double sum) {
         Estimate foundEstimate = estimateRepository.findById(estimateId).get();
-        foundEstimate.setEstimatePerformance(isComplete ? foundEstimate.getEstimatePerformance() + sum :
-                foundEstimate.getEstimatePerformance() - sum);
-        foundEstimate.setEstimateNotPayment(isComplete ? foundEstimate.getEstimateNotPayment() + sum :
-                foundEstimate.getEstimateNotPayment() - sum);
+        foundEstimate.setPerformance(isComplete ? foundEstimate.getPerformance() + sum :
+                foundEstimate.getPerformance() - sum);
+        foundEstimate.setNotPayment(isComplete ? foundEstimate.getNotPayment() + sum :
+                foundEstimate.getNotPayment() - sum);
         log.info("updateEstimatePerformance estimate: {} estimatePerformance: {} estimateNotPayment: {}",
-                foundEstimate.getEstimateName(), foundEstimate.getEstimatePerformance(), foundEstimate.getEstimateNotPayment());
+                foundEstimate.getName(), foundEstimate.getPerformance(), foundEstimate.getNotPayment());
         estimateRepository.save(foundEstimate);
     }
     @Override
     public void updateEstimatePayment(Long estimateId, double sum) {
         Estimate foundEstimate = estimateRepository.findById(estimateId).get();
-        foundEstimate.setEstimateNotPayment(foundEstimate.getEstimatePerformance() -
-                (foundEstimate.getEstimatePayment() + sum));
-        foundEstimate.setEstimatePayment(foundEstimate.getEstimatePayment() + sum);
+        foundEstimate.setNotPayment(foundEstimate.getPerformance() -
+                (foundEstimate.getPayment() + sum));
+        foundEstimate.setPayment(foundEstimate.getPayment() + sum);
         log.info("updateEstimatePayment estimate: {} estimatePayment: {} estimateNotPayment: {}",
-                foundEstimate.getEstimateName(), foundEstimate.getEstimatePayment(), foundEstimate.getEstimateNotPayment());
+                foundEstimate.getName(), foundEstimate.getPayment(), foundEstimate.getNotPayment());
         estimateRepository.save(foundEstimate);
     }
 }

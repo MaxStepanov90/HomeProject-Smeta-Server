@@ -20,14 +20,14 @@ public class Estimate {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 //    название
-    private String estimateName;
+    private String name;
 //    договорная цена
-    private double estimateCost;
+    private double cost;
 //    выполнено
-    private double estimatePerformance;
+    private double performance;
 //    оплачено
-    private double estimatePayment;
+    private double payment;
 //     к оплате
-    private double estimateNotPayment;
+    private double notPayment;
     private Long projectId;
 }

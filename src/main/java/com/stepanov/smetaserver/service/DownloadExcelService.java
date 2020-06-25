@@ -75,16 +75,16 @@ public class DownloadExcelService {
     public void createProjectDescription(Sheet sheet, Project foundProject, Estimate foundEstimate, String category) {
         Row titleRow0 = sheet.createRow(0);
         sheet.addMergedRegion(new CellRangeAddress(0, 0, 0, columns.length - 1));
-        titleRow0.createCell(0).setCellValue("Объект: " + foundProject.getProjectName());
+        titleRow0.createCell(0).setCellValue("Объект: " + foundProject.getName());
 
         Row titleRow1 = sheet.createRow(1);
         sheet.addMergedRegion(new CellRangeAddress(1, 1, 0, columns.length - 1));
-        titleRow1.createCell(0).setCellValue("Адрес: " + foundProject.getProjectAddress());
+        titleRow1.createCell(0).setCellValue("Адрес: " + foundProject.getAddress());
 
         Row titleRow2 = sheet.createRow(2);
         sheet.addMergedRegion(new CellRangeAddress(2, 2, 0, columns.length - 1));
         titleRow2.createCell(0).setCellValue(
-                "Название сметы: " + foundEstimate.getEstimateName() + "(" + category + ")");
+                "Название сметы: " + foundEstimate.getName() + "(" + category + ")");
     }
 
     public void createListHeaderRow(Sheet sheet, CellStyle headerCellStyle) {

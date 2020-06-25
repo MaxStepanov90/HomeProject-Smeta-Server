@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ProjectRepository extends PagingAndSortingRepository<Project, Long> {
 
-    @Query("From Project p WHERE p.projectName=:searchText OR p.projectAddress=:searchText OR" +
-            " p.projectContract=:searchText ORDER BY p.projectCreationDate DESC")
+    @Query("From Project p WHERE p.name=:searchText OR p.address=:searchText OR" +
+            " p.contract=:searchText ORDER BY p.creationDate DESC")
     Page<Project> findAllProjects(Pageable pageable, @Param("searchText") String searchText);
 }

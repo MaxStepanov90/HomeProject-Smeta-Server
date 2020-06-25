@@ -36,7 +36,7 @@ public class PaymentServiceImpl implements PaymentService {
     @Override
     public Payment save(Payment payment) {
         Estimate foundEstimate = estimateService.findById(payment.getEstimateId());
-        payment.setEstimateName(foundEstimate.getEstimateName());
+        payment.setEstimateName(foundEstimate.getName());
         payment.setDate(LocalDate.now());
         payment.setProjectId(foundEstimate.getProjectId());
         log.info("save new payment estimateName: {} amount: {} category: {} date: {}",

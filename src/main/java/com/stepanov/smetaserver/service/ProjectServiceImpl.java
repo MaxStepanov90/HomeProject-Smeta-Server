@@ -9,6 +9,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ProjectServiceImpl implements ProjectService {
 
@@ -25,9 +27,7 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public Page<Project> findAll(Pageable pageable) {
-        return projectRepository.findAll(pageable);
-    }
+    public List<Project> findAll() { return (List<Project>) projectRepository.findAll(); }
 
     @Override
     public Project findById(Long id) {
