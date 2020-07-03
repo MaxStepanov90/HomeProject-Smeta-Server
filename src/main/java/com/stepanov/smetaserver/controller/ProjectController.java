@@ -4,9 +4,7 @@ import com.stepanov.smetaserver.model.Project;
 import com.stepanov.smetaserver.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -30,20 +28,12 @@ public class ProjectController {
     public ResponseEntity<Page<Project>> findAll(Pageable pageable, @PathVariable String searchText) {
         return new ResponseEntity<>(projectService.findAll(pageable, searchText), HttpStatus.OK);
     }
-//    @GetMapping
-//    public ResponseEntity<Page<Project>> findAll(int pageNumber, int pageSize, String sortBy, String sortDir) {
-//        return new ResponseEntity<>(projectService.findAll(
-//                PageRequest.of(
-//                        pageNumber, pageSize,
-//                        sortDir.equalsIgnoreCase("asc") ?
-//                                Sort.by(sortBy).ascending() : Sort.by(sortBy).descending()
-//                )
-//        ), HttpStatus.OK);
-//    }
-@GetMapping
-public ResponseEntity<List<Project>> findAll() {
-    return new ResponseEntity<>(projectService.findAll(), HttpStatus.OK);
-}
+
+    @GetMapping
+    public ResponseEntity<List<Project>> findAll() {
+        return new ResponseEntity<>(projectService.findAll(), HttpStatus.OK);
+    }
+
     @GetMapping("{id}")
     public ResponseEntity<Project> findById(@PathVariable Long id) {
         return new ResponseEntity<>(projectService.findById(id), HttpStatus.OK);
