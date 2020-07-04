@@ -2,7 +2,7 @@ import {IMarkUp} from "../../interfaces/IMarkUp";
 import {showAppMessage} from "./appActions";
 import {DELETE_MARK_UP, FIND_ALL_MARK_UPS, FIND_MARK_UP_BY_ID} from "../actionTypes/markUpActionTypes";
 import {Dispatch} from "react";
-import {Links} from "../../utils/Links";
+import {URL} from "../../utils/URL";
 import {MyToastMessageType} from "../../utils/MyToastMessageType";
 import {MyToastMessageText} from "../../utils/MyToastMessageText";
 
@@ -28,7 +28,7 @@ const deleteMarkUpSuccess = (markUpId: number) => {
 export function findAllMarkUps(): (dispatch: Dispatch<any>) => void {
     return (dispatch) => {
         try {
-             fetch(Links.FindAllMarkUps)
+             fetch(URL.FindAllMarkUps)
                 .then(response => response.json())
                 .then((markUps: IMarkUp[]) => {
                     dispatch(findAllMarkUpsSuccess(markUps))
@@ -43,7 +43,7 @@ export function findAllMarkUps(): (dispatch: Dispatch<any>) => void {
 export function findMarkUpById(markUpId: number) {
     return (dispatch: Dispatch<any>) => {
         try {
-             fetch(Links.FindMarkUpById + markUpId)
+             fetch(URL.FindMarkUpById + markUpId)
                 .then(response => response.json())
                 .then((markUp: IMarkUp) => {
                     dispatch(findMarkUpByIdSuccess(markUp))
@@ -59,7 +59,7 @@ export function updateMarkUp(markUp: IMarkUp) {
         try {
             const headers = new Headers();
             headers.append('Content-Type', 'application/json');
-             fetch(Links.UpdateMarkUp, {
+             fetch(URL.UpdateMarkUp, {
                 method: 'PUT',
                 body: JSON.stringify(markUp),
                 headers
@@ -79,7 +79,7 @@ export function updateMarkUp(markUp: IMarkUp) {
 export function deleteMarkUp(markUpId: number) {
     return async (dispatch: Dispatch<any>) => {
         try {
-            await fetch(Links.DeleteMarkUp + markUpId, {method: 'DELETE'})
+            await fetch(URL.DeleteMarkUp + markUpId, {method: 'DELETE'})
                 .then(() => {
                     dispatch(deleteMarkUpSuccess(markUpId))
                     dispatch(showAppMessage(MyToastMessageText.SuccessDelete, MyToastMessageType.Success))

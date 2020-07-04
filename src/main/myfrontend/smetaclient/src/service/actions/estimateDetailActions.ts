@@ -1,5 +1,5 @@
 import {Dispatch} from "react";
-import {Links} from "../../utils/Links";
+import {URL} from "../../utils/URL";
 import {showAppMessage} from "./appActions";
 import {MyToastMessageText} from "../../utils/MyToastMessageText";
 import {MyToastMessageType} from "../../utils/MyToastMessageType";
@@ -34,7 +34,7 @@ const toggleEstimateDetailCompleteSuccess = (estimateDetailId: number) => {
 export function findAllEstimateDetails(estimateId: number) {
     return async (dispatch: Dispatch<any>) => {
         try {
-            await fetch(Links.FindAllEstimateDetails + estimateId)
+            await fetch(URL.FindAllEstimateDetails + estimateId)
                 .then(response => response.json())
                 .then((estimateDetails: IEstimateDetail[]) => {
                     dispatch(findAllEstimateDetailsSuccess(estimateDetails))
@@ -47,7 +47,7 @@ export function findAllEstimateDetails(estimateId: number) {
 export function deleteEstimateDetail(estimateDetailId: number) {
     return async (dispatch: Dispatch<any>) => {
         try {
-            await fetch(Links.DeleteEstimateDetail + estimateDetailId, {method: 'DELETE'})
+            await fetch(URL.DeleteEstimateDetail + estimateDetailId, {method: 'DELETE'})
                 .then(() => {
                     dispatch(deleteEstimateDetailSuccess(estimateDetailId))
                     dispatch(showAppMessage(MyToastMessageText.SuccessDelete, MyToastMessageType.Success))
@@ -63,7 +63,7 @@ export function updateEstimateDetail(estimateDetail: IEstimateDetail) {
         try {
             const headers = new Headers();
             headers.append('Content-Type', 'application/json');
-            await fetch(Links.UpdateEstimateDetail, {
+            await fetch(URL.UpdateEstimateDetail, {
                 method: 'PUT',
                 body: JSON.stringify(estimateDetail),
                 headers
@@ -85,7 +85,7 @@ export function saveNewEstimateDetail(estimateDetail: INewEstimateDetail) {
         try {
             const headers = new Headers();
             headers.append('Content-Type', 'application/json');
-            await fetch(Links.SaveEstimateDetail, {
+            await fetch(URL.SaveEstimateDetail, {
                 method: 'POST',
                 body: JSON.stringify(estimateDetail),
                 headers

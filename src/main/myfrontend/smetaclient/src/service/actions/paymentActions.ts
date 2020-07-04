@@ -2,7 +2,7 @@ import {IPayment} from "../../interfaces/IPayment";
 import {FIND_ALL_PAYMENTS_BY_ESTIMATE_ID, FIND_ALL_PAYMENTS_BY_PROJECT_ID} from "../actionTypes/paymentActionTypes";
 import {Dispatch} from "react";
 import {showAppMessage} from "./appActions";
-import {Links} from "../../utils/Links";
+import {URL} from "../../utils/URL";
 import {MyToastMessageType} from "../../utils/MyToastMessageType";
 import {MyToastMessageText} from "../../utils/MyToastMessageText";
 import {INewPayment} from "../../interfaces/INewPayment";
@@ -23,7 +23,7 @@ const findAllPaymentsByEstimateIdSuccess = (payments: IPayment[]) => {
 export function findAllPaymentsByProjectId(projectId: number) {
     return async (dispatch: Dispatch<any>) => {
         try {
-            await fetch(Links.FindAllPaymentsByProjectId + projectId)
+            await fetch(URL.FindAllPaymentsByProjectId + projectId)
                 .then(response => response.json())
                 .then((payments: IPayment[]) => {
                     dispatch(findAllPaymentsByProjectIdSuccess(payments))
@@ -36,7 +36,7 @@ export function findAllPaymentsByProjectId(projectId: number) {
 export function findAllPaymentsByEstimateId(estimateId: number) {
     return async (dispatch: Dispatch<any>) => {
         try {
-            await fetch(Links.FindAllPaymentsByEstimateId + estimateId)
+            await fetch(URL.FindAllPaymentsByEstimateId + estimateId)
                 .then(response => response.json())
                 .then((payments: IPayment[]) => {
                     dispatch(findAllPaymentsByEstimateIdSuccess(payments))
@@ -52,7 +52,7 @@ export function saveNewPayment(payment: INewPayment) {
         try {
             const headers = new Headers();
             headers.append('Content-Type', 'application/json');
-            await fetch(Links.SavePayment, {
+            await fetch(URL.SavePayment, {
                 method: 'POST',
                 body: JSON.stringify(payment),
                 headers

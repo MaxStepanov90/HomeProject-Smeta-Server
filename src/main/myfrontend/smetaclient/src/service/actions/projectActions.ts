@@ -4,7 +4,7 @@ import {Dispatch} from "react";
 import {showAppMessage} from "./appActions";
 import {MyToastMessageText} from "../../utils/MyToastMessageText";
 import {MyToastMessageType} from "../../utils/MyToastMessageType";
-import {Links} from "../../utils/Links";
+import {URL} from "../../utils/URL";
 import {INewProject} from "../../interfaces/INewProject";
 
 const findProjectByIdSuccess = (project: IProject) => {
@@ -30,7 +30,7 @@ const deleteProjectSuccess = (projectId: number) => {
 export function findProjectById(projectId: number) {
     return async (dispatch: Dispatch<any>) => {
         try {
-            await fetch(Links.FindProjectById + projectId)
+            await fetch(URL.FindProjectById + projectId)
                 .then(response => response.json())
                 .then((project) => {
                     if (project) {
@@ -46,7 +46,7 @@ export function findProjectById(projectId: number) {
 export function findAllProjects() {
     return (dispatch: Dispatch<any>) => {
         try {
-             fetch(Links.FindAllProjects)
+             fetch(URL.FindAllProjects)
                 .then(response => response.json())
                 .then((projects) => {
                     dispatch(findAllProjectsSuccess(projects))
@@ -60,7 +60,7 @@ export function findAllProjects() {
 export function deleteProject(projectId: number) {
     return async (dispatch: Dispatch<any>) => {
         try {
-            await fetch(Links.DeleteProject + "/" + projectId, {method: 'DELETE'})
+            await fetch(URL.DeleteProject + "/" + projectId, {method: 'DELETE'})
                 .then(() => {
                     dispatch(deleteProjectSuccess(projectId))
                     dispatch(showAppMessage(MyToastMessageText.SuccessDelete, MyToastMessageType.Success))
@@ -76,7 +76,7 @@ export function saveNewProject(project: INewProject) {
         try {
             const headers = new Headers();
             headers.append('Content-Type', 'application/json');
-             await fetch(Links.SaveProject, {
+             await fetch(URL.SaveProject, {
                 method: 'PUT',
                 body: JSON.stringify(project),
                 headers

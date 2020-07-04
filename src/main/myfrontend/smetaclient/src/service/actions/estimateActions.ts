@@ -1,7 +1,7 @@
 import {DELETE_ESTIMATE, FIND_ESTIMATE_BY_ID, FIND_ESTIMATES_BY_PROJECT_ID} from "../actionTypes/estimateActionTypes";
 import {IEstimate} from "../../interfaces/IEstimate.";
 import {Dispatch} from "react";
-import {Links} from "../../utils/Links";
+import {URL} from "../../utils/URL";
 import {showAppMessage} from "./appActions";
 import {MyToastMessageText} from "../../utils/MyToastMessageText";
 import {MyToastMessageType} from "../../utils/MyToastMessageType";
@@ -28,7 +28,7 @@ const deleteEstimateSuccess = (estimateId: number) => {
 export function findAllEstimatesByProjectId(projectId: number): (dispatch: Dispatch<any>) => void {
     return async (dispatch) => {
         try {
-            await fetch(Links.FindAllEstimatesByProjectId + projectId)
+            await fetch(URL.FindAllEstimatesByProjectId + projectId)
                 .then(response => response.json())
                 .then((estimates: IEstimate[]) => {
                     dispatch(findAllEstimatesByProjectIdSuccess(estimates))
@@ -41,7 +41,7 @@ export function findAllEstimatesByProjectId(projectId: number): (dispatch: Dispa
 export function findEstimateById(estimateId: number){
     return async (dispatch: Dispatch<any>) => {
         try {
-            await  fetch(Links.FindEstimateById + estimateId)
+            await  fetch(URL.FindEstimateById + estimateId)
                 .then(response => response.json())
                 .then((estimate) => {
                 if (estimate){
@@ -57,7 +57,7 @@ export function findEstimateById(estimateId: number){
 export function deleteEstimate(estimateId: number) {
     return async (dispatch: Dispatch<any>) => {
         try {
-            await fetch(Links.DeleteEstimate + estimateId, {method: 'DELETE'})
+            await fetch(URL.DeleteEstimate + estimateId, {method: 'DELETE'})
                 .then(() => {
                     dispatch(deleteEstimateSuccess(estimateId))
                     dispatch(showAppMessage(MyToastMessageText.SuccessDelete, MyToastMessageType.Success))
@@ -73,7 +73,7 @@ export function saveNewEstimate(estimate: INewEstimate) {
         try {
             const headers = new Headers();
             headers.append('Content-Type', 'application/json');
-            await fetch(Links.SaveEstimate, {
+            await fetch(URL.SaveEstimate, {
                 method: 'PUT',
                 body: JSON.stringify(estimate),
                 headers

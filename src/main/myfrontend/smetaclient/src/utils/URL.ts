@@ -1,4 +1,4 @@
-export enum Links {
+export enum URL {
     FindProjectById = "http://localhost:8080/remsmet/projects/",
     FindAllProjects = "http://localhost:8080/remsmet/projects",
     DeleteProject = "http://localhost:8080/remsmet/projects",
