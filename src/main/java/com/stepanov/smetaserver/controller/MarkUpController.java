@@ -12,7 +12,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/markUps")
-@CrossOrigin(origins = "http://localhost:3000")
 public class MarkUpController {
 
     private final MarkUpServiceImpl markUpService;

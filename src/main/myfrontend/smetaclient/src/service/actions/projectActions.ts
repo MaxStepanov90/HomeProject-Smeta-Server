@@ -4,7 +4,6 @@ import {Dispatch} from "react";
 import {showAppMessage} from "./appActions";
 import {MyToastMessageText} from "../../utils/MyToastMessageText";
 import {MyToastMessageType} from "../../utils/MyToastMessageType";
-import {URL} from "../../utils/URL";
 import {INewProject} from "../../interfaces/INewProject";
 
 const findProjectByIdSuccess = (project: IProject) => {
@@ -28,9 +27,9 @@ const deleteProjectSuccess = (projectId: number) => {
 }
 
 export function findProjectById(projectId: number) {
-    return async (dispatch: Dispatch<any>) => {
+    return (dispatch: Dispatch<any>) => {
         try {
-            await fetch(URL.FindProjectById + projectId)
+            fetch("/projects/" + projectId)
                 .then(response => response.json())
                 .then((project) => {
                     if (project) {
@@ -46,7 +45,7 @@ export function findProjectById(projectId: number) {
 export function findAllProjects() {
     return (dispatch: Dispatch<any>) => {
         try {
-             fetch(URL.FindAllProjects)
+            fetch("/projects")
                 .then(response => response.json())
                 .then((projects) => {
                     dispatch(findAllProjectsSuccess(projects))
@@ -60,7 +59,7 @@ export function findAllProjects() {
 export function deleteProject(projectId: number) {
     return async (dispatch: Dispatch<any>) => {
         try {
-            await fetch(URL.DeleteProject + "/" + projectId, {method: 'DELETE'})
+            await fetch("/projects/" + projectId, {method: 'DELETE'})
                 .then(() => {
                     dispatch(deleteProjectSuccess(projectId))
                     dispatch(showAppMessage(MyToastMessageText.SuccessDelete, MyToastMessageType.Success))
@@ -76,7 +75,7 @@ export function saveNewProject(project: INewProject) {
         try {
             const headers = new Headers();
             headers.append('Content-Type', 'application/json');
-             await fetch(URL.SaveProject, {
+            await fetch('/projects', {
                 method: 'PUT',
                 body: JSON.stringify(project),
                 headers

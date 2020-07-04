@@ -1,5 +1,4 @@
 import {Dispatch} from "react";
-import {URL} from "../../utils/URL";
 import {showAppMessage} from "./appActions";
 import {MyToastMessageText} from "../../utils/MyToastMessageText";
 import {MyToastMessageType} from "../../utils/MyToastMessageType";
@@ -34,7 +33,7 @@ const toggleEstimateDetailCompleteSuccess = (estimateDetailId: number) => {
 export function findAllEstimateDetails(estimateId: number) {
     return async (dispatch: Dispatch<any>) => {
         try {
-            await fetch(URL.FindAllEstimateDetails + estimateId)
+            await fetch("/estimateDetails/estimateId/" + estimateId)
                 .then(response => response.json())
                 .then((estimateDetails: IEstimateDetail[]) => {
                     dispatch(findAllEstimateDetailsSuccess(estimateDetails))
@@ -44,10 +43,11 @@ export function findAllEstimateDetails(estimateId: number) {
         }
     }
 }
+
 export function deleteEstimateDetail(estimateDetailId: number) {
     return async (dispatch: Dispatch<any>) => {
         try {
-            await fetch(URL.DeleteEstimateDetail + estimateDetailId, {method: 'DELETE'})
+            await fetch("/estimateDetails/" + estimateDetailId, {method: 'DELETE'})
                 .then(() => {
                     dispatch(deleteEstimateDetailSuccess(estimateDetailId))
                     dispatch(showAppMessage(MyToastMessageText.SuccessDelete, MyToastMessageType.Success))
@@ -63,7 +63,7 @@ export function updateEstimateDetail(estimateDetail: IEstimateDetail) {
         try {
             const headers = new Headers();
             headers.append('Content-Type', 'application/json');
-            await fetch(URL.UpdateEstimateDetail, {
+            await fetch("/estimateDetails", {
                 method: 'PUT',
                 body: JSON.stringify(estimateDetail),
                 headers
@@ -85,7 +85,7 @@ export function saveNewEstimateDetail(estimateDetail: INewEstimateDetail) {
         try {
             const headers = new Headers();
             headers.append('Content-Type', 'application/json');
-            await fetch(URL.SaveEstimateDetail, {
+            await fetch("/estimateDetails", {
                 method: 'POST',
                 body: JSON.stringify(estimateDetail),
                 headers

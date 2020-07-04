@@ -1,7 +1,6 @@
 import {DELETE_ESTIMATE, FIND_ESTIMATE_BY_ID, FIND_ESTIMATES_BY_PROJECT_ID} from "../actionTypes/estimateActionTypes";
 import {IEstimate} from "../../interfaces/IEstimate.";
 import {Dispatch} from "react";
-import {URL} from "../../utils/URL";
 import {showAppMessage} from "./appActions";
 import {MyToastMessageText} from "../../utils/MyToastMessageText";
 import {MyToastMessageType} from "../../utils/MyToastMessageType";
@@ -25,10 +24,11 @@ const deleteEstimateSuccess = (estimateId: number) => {
         payload: estimateId
     }
 }
+
 export function findAllEstimatesByProjectId(projectId: number): (dispatch: Dispatch<any>) => void {
     return async (dispatch) => {
         try {
-            await fetch(URL.FindAllEstimatesByProjectId + projectId)
+            await fetch("/estimates/projectId/" + projectId)
                 .then(response => response.json())
                 .then((estimates: IEstimate[]) => {
                     dispatch(findAllEstimatesByProjectIdSuccess(estimates))
@@ -38,18 +38,19 @@ export function findAllEstimatesByProjectId(projectId: number): (dispatch: Dispa
         }
     }
 }
-export function findEstimateById(estimateId: number){
+
+export function findEstimateById(estimateId: number) {
     return async (dispatch: Dispatch<any>) => {
         try {
-            await  fetch(URL.FindEstimateById + estimateId)
+            await fetch("/estimates/" + estimateId)
                 .then(response => response.json())
                 .then((estimate) => {
-                if (estimate){
-                    dispatch(findEstimateByIdSuccess(estimate))
-                }
-            })
+                    if (estimate) {
+                        dispatch(findEstimateByIdSuccess(estimate))
+                    }
+                })
         } catch (e) {
-            dispatch(showAppMessage(MyToastMessageText.ErrorRequestServer,MyToastMessageType.Error))
+            dispatch(showAppMessage(MyToastMessageText.ErrorRequestServer, MyToastMessageType.Error))
         }
     }
 }
@@ -57,7 +58,7 @@ export function findEstimateById(estimateId: number){
 export function deleteEstimate(estimateId: number) {
     return async (dispatch: Dispatch<any>) => {
         try {
-            await fetch(URL.DeleteEstimate + estimateId, {method: 'DELETE'})
+            await fetch("/estimates/" + estimateId, {method: 'DELETE'})
                 .then(() => {
                     dispatch(deleteEstimateSuccess(estimateId))
                     dispatch(showAppMessage(MyToastMessageText.SuccessDelete, MyToastMessageType.Success))
@@ -73,7 +74,7 @@ export function saveNewEstimate(estimate: INewEstimate) {
         try {
             const headers = new Headers();
             headers.append('Content-Type', 'application/json');
-            await fetch(URL.SaveEstimate, {
+            await fetch("/estimates", {
                 method: 'PUT',
                 body: JSON.stringify(estimate),
                 headers

@@ -12,7 +12,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/estimateDetails")
-@CrossOrigin(origins = "http://localhost:3000")
 public class EstimateDetailController {
 
     private final EstimateDetailServiceImpl estimateDetailService;

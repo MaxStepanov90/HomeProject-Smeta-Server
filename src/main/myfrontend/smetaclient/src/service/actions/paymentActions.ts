@@ -2,7 +2,6 @@ import {IPayment} from "../../interfaces/IPayment";
 import {FIND_ALL_PAYMENTS_BY_ESTIMATE_ID, FIND_ALL_PAYMENTS_BY_PROJECT_ID} from "../actionTypes/paymentActionTypes";
 import {Dispatch} from "react";
 import {showAppMessage} from "./appActions";
-import {URL} from "../../utils/URL";
 import {MyToastMessageType} from "../../utils/MyToastMessageType";
 import {MyToastMessageText} from "../../utils/MyToastMessageText";
 import {INewPayment} from "../../interfaces/INewPayment";
@@ -23,7 +22,7 @@ const findAllPaymentsByEstimateIdSuccess = (payments: IPayment[]) => {
 export function findAllPaymentsByProjectId(projectId: number) {
     return async (dispatch: Dispatch<any>) => {
         try {
-            await fetch(URL.FindAllPaymentsByProjectId + projectId)
+            await fetch("/payments/projectId/" + projectId)
                 .then(response => response.json())
                 .then((payments: IPayment[]) => {
                     dispatch(findAllPaymentsByProjectIdSuccess(payments))
@@ -36,7 +35,7 @@ export function findAllPaymentsByProjectId(projectId: number) {
 export function findAllPaymentsByEstimateId(estimateId: number) {
     return async (dispatch: Dispatch<any>) => {
         try {
-            await fetch(URL.FindAllPaymentsByEstimateId + estimateId)
+            await fetch("/payments/estimateId/" + estimateId)
                 .then(response => response.json())
                 .then((payments: IPayment[]) => {
                     dispatch(findAllPaymentsByEstimateIdSuccess(payments))
@@ -52,7 +51,7 @@ export function saveNewPayment(payment: INewPayment) {
         try {
             const headers = new Headers();
             headers.append('Content-Type', 'application/json');
-            await fetch(URL.SavePayment, {
+            await fetch("/payments", {
                 method: 'POST',
                 body: JSON.stringify(payment),
                 headers
