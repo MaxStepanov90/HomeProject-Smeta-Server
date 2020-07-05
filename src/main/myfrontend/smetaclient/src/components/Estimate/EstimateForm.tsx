@@ -44,13 +44,13 @@ const EstimateForm: React.FC<EstimateFormProps> = ({history}) => {
             <Form.Control required autoComplete="off"
                           type="test" name="estimateName"
                           value={estimateName} onChange={event => setEstimateName(event.target.value)}
-                          placeholder="Черновые работы"/>
+                          />
         </Form.Group>
 
     return (
         <Container>
             <MyToast show={show} message={messageText} type={messageType}/>
-            <Card className={"border border-dark"}>
+            <Card className="border border-dark m-3">
                 <Card.Header>
                     <FontAwesomeIcon icon={faPlus}/>&nbsp;Новая смета
                 </Card.Header>
@@ -62,7 +62,7 @@ const EstimateForm: React.FC<EstimateFormProps> = ({history}) => {
                     </Card.Body>
                     <Card.Footer style={{"textAlign": "right"}}>
                         <Button size="sm" variant="success" type="submit">
-                            <FontAwesomeIcon icon={faSave}/>&nbsp;Сохранить
+                            <FontAwesomeIcon icon={faSave}/>&nbsp;Создать
                         </Button>{' '}
                         <Button size="sm" variant="info" type="button"
                                 onClick={() => estimateList(id)}>

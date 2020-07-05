@@ -5,10 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,7 +14,9 @@ import javax.persistence.Id;
 @Entity
 public class EstimateDetail {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator( name = "jpaEstimateDetailSequence", sequenceName = "JPA_ESTIMATE_DETAIL_SEQUENCE", allocationSize = 1, initialValue = 7 )
+    @GeneratedValue( strategy = GenerationType.SEQUENCE, generator = "jpaEstimateDetailSequence")
+    @Column(name = "id", nullable = false, updatable = false)
     private long id;
     private String name;
     private String unit;
@@ -29,4 +28,5 @@ public class EstimateDetail {
     private String category;
     private boolean complete;
     private Long estimateId;
+
 }

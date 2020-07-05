@@ -1,4 +1,5 @@
 import React from "react";
+import {Col} from "react-bootstrap";
 
 type TabDescriptionColumnProps = {
     title: string,
@@ -11,7 +12,7 @@ export const TabDescriptionColumn: React.FC<TabDescriptionColumnProps> = (
 ) => {
 
     return (
-        <div className="col">
+        <Col>
             <div className="row">
                 {title}
             </div>
@@ -24,6 +25,6 @@ export const TabDescriptionColumn: React.FC<TabDescriptionColumnProps> = (
             <div className="row">
                 {dataOfAll}
             </div>
-        </div>
+        </Col>
     )
 }

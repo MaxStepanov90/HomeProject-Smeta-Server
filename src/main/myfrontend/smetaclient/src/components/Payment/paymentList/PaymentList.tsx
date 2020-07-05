@@ -34,7 +34,7 @@ const PaymentList: React.FC<PaymentListProps> = ({history}) => {
     return (
         <Container>
             <MyToast show={show} message={messageText} type={messageType}/>
-            <Card className={"border border-dark"}>
+            <Card className="border border-dark m-3">
                 <Card.Header>
                     <FontAwesomeIcon icon={faInfo}/>&nbsp;Платежи
                 </Card.Header>

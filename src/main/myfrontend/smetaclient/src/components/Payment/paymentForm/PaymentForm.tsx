@@ -87,7 +87,7 @@ const PaymentForm: React.FC<PaymentFormProps> = ({history}) => {
     return (
         <Container>
             <MyToast show={show} message={messageText} type={messageType}/>
-            <Card className={"border border-dark"}>
+            <Card className="border border-dark m-3">
                 <Card.Header>
                     <FontAwesomeIcon icon={faPlus}/>&nbsp;Новый платеж
                 </Card.Header>

@@ -6,7 +6,7 @@ export const Footer: React.FC = () => {
     let fullYear = new Date().getFullYear();
 
     return (
-        <Navbar fixed="bottom" bg="dark" variant="dark">
+        <Navbar expand="sm" fixed="bottom" bg="light">
             <Container>
                 <Col lg={12} className="text-center text-muted">
                     <div>{fullYear}-{fullYear + 1},&nbsp;Все права защищены</div>

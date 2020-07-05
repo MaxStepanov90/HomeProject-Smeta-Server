@@ -7,7 +7,7 @@ type PaymentListTableProps = {
 }
 export const PaymentListTable: React.FC<PaymentListTableProps> = ({payments}) => {
     return (
-        <Table bordered hover striped>
+        <Table responsive="sm" bordered>
             <thead>
             <tr>
                 <th scope="col">Дата платежа</th>
@@ -19,7 +19,7 @@ export const PaymentListTable: React.FC<PaymentListTableProps> = ({payments}) =>
             <tbody>
             {payments.length === 0 ?
                 <tr>
-                    <td align="center" colSpan={6}>Нет информации по платежам</td>
+                    <td align="left" colSpan={12}>Нет информации по платежам</td>
                 </tr> :
                 payments.map((payment: IPayment) => (
                     <tr key={payment.id}>

@@ -4,10 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -15,7 +12,9 @@ import javax.persistence.Id;
 @Entity
 public class MarkUp {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator( name = "jpaMarkUpSequence", sequenceName = "JPA_MARK_UP_SEQUENCE", allocationSize = 1, initialValue = 3 )
+    @GeneratedValue( strategy = GenerationType.SEQUENCE, generator = "jpaMarkUpSequence")
+    @Column(name = "id", nullable = false, updatable = false)
     private int id;
     private String markUpName;
     private double markUpPercent;

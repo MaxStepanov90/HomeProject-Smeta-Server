@@ -18,7 +18,7 @@ import java.time.LocalDate;
 @Slf4j
 @RestController
 @RequestMapping("/download/excel")
-@CrossOrigin(origins = "http://localhost:3000", exposedHeaders = {"Content-Disposition"})
+//@CrossOrigin(origins = "http://localhost:3000", exposedHeaders = {"Content-Disposition"})
 public class DownloadExcelController {
 
     private final DownloadExcelService excelService;

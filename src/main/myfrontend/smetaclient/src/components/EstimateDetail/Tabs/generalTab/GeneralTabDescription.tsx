@@ -1,6 +1,7 @@
 import React from "react";
 import {TabDescriptionColumn} from "../../../Generic/TabDescriptionColumn";
 import {DescriptionRaw} from "../../../Generic/DescrpirtionRaw";
+import {Col, Container, Row} from "react-bootstrap";
 
 type TabGeneralDescriptionProps = {
     estimateName: string,
@@ -13,48 +14,37 @@ type TabGeneralDescriptionProps = {
 }
 export const GeneralTabDescription: React.FC<TabGeneralDescriptionProps> = (
     {
-        estimateName, sumOfWorks, sumOfMaterials, sumOfMarkUpFromWorks,
-        sumOfMarkUpFromMaterials, sumOfWorksWithMarkUp,
+        estimateName, sumOfWorks, sumOfMaterials, sumOfWorksWithMarkUp,
         sumOfMaterialsWithMarkUp,
     }) => {
 
     const dataOfAll = Math.round((sumOfWorks + sumOfMaterials) * 100) / 100;
-    const dataOfAllMarkUps = Math.round((sumOfMarkUpFromWorks + sumOfMarkUpFromMaterials) * 100) / 100;
-    const dataOfAllWithMarkUps = Math.round((sumOfWorksWithMarkUp + sumOfMaterialsWithMarkUp) * 100) / 100;
     const sumOfAll = Math.round((sumOfWorksWithMarkUp + sumOfMaterialsWithMarkUp) * 100) / 100;
 
     return (
-        <div className="row justify-content-between">
-            <div className="col-5">
+        <Row className="justify-content-between">
+            <div className="col-sm-12 col-md-5 col-lg-5 col-xl-5">
                 <DescriptionRaw title={"Смета"} value={estimateName}/>
             </div>
-            <div className="col-6">
-                <div className="row">
-                    <TabDescriptionColumn title={"Категория:"}
-                                          dataOfWorks={"Работы:"}
-                                          dataOfMaterials={"Материалы:"}
-                                          dataOfAll={"Итого:"}
-                    />
-                    <TabDescriptionColumn title={"Себестоимость"}
-                                          dataOfWorks={sumOfWorks}
-                                          dataOfMaterials={sumOfMaterials}
-                                          dataOfAll={dataOfAll}
-                    />
-                    <TabDescriptionColumn title={"Наценка"}
-                                          dataOfWorks={sumOfMarkUpFromWorks}
-                                          dataOfMaterials={sumOfMarkUpFromMaterials}
-                                          dataOfAll={dataOfAllMarkUps}
-                    />
-                    <TabDescriptionColumn title={"для Клиента"}
-                                          dataOfWorks={sumOfWorksWithMarkUp}
-                                          dataOfMaterials={sumOfMaterialsWithMarkUp}
-                                          dataOfAll={dataOfAllWithMarkUps}
-                    />
-                    <div className="col align-self-center">
-                        <h1>{sumOfAll}</h1>
-                    </div>
-                </div>
-            </div>
-        </div>
+            <Col className="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                <Container>
+                    <Row>
+                        <TabDescriptionColumn title={"Категория:"}
+                                              dataOfWorks={"Работы:"}
+                                              dataOfMaterials={"Материалы:"}
+                                              dataOfAll={"Итого:"}
+                        />
+                        <TabDescriptionColumn title={"Стоимость"}
+                                              dataOfWorks={sumOfWorks}
+                                              dataOfMaterials={sumOfMaterials}
+                                              dataOfAll={dataOfAll}
+                        />
+                        <Col className="align-self-center">
+                            <h4>{sumOfAll}</h4>
+                        </Col>
+                    </Row>
+                </Container>
+            </Col>
+        </Row>
     )
 }

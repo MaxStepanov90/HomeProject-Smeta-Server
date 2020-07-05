@@ -1,6 +1,6 @@
 import React, {FormEvent, useState} from 'react';
 
-import {Button, Card, Col, Container, Form} from 'react-bootstrap';
+import {Button, Card, Container, Form} from 'react-bootstrap';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faFolderPlus, faList, faSave} from '@fortawesome/free-solid-svg-icons';
 import {MyToast} from "../../Generic/MyToast/MyToast";
@@ -49,7 +49,7 @@ const ProjectForm: React.FC<ProjectFormProps> = ({history}) => {
     };
 
     const projectContractInputField =
-        <Form.Group as={Col} controlId="formGridProjectContract">
+        <Form.Group className="col-sm-12 col-md-4 col-lg-4 col-xl-4" controlId="formGridProjectContract">
             <Form.Label>Договор</Form.Label>
             <Form.Control required autoComplete="off"
                           type="test" name="projectContract"
@@ -57,7 +57,7 @@ const ProjectForm: React.FC<ProjectFormProps> = ({history}) => {
             />
         </Form.Group>
     const projectNameInputField =
-        <Form.Group as={Col} controlId="formGridProjectName">
+        <Form.Group className="col-sm-12 col-md-6 col-lg-6 col-xl-6" controlId="formGridProjectName">
             <Form.Label>Название проекта</Form.Label>
             <Form.Control required autoComplete="off"
                           type="test" name="projectName"
@@ -65,7 +65,7 @@ const ProjectForm: React.FC<ProjectFormProps> = ({history}) => {
             />
         </Form.Group>
     const projectAddressInputField =
-        <Form.Group as={Col} controlId="formGridProjectAddress">
+        <Form.Group className="col-sm-12 col-md-6 col-lg-6 col-xl-6" controlId="formGridProjectAddress">
             <Form.Label>Адрес объекта</Form.Label>
             <Form.Control required autoComplete="off"
                           type="test" name="projectAddress"
@@ -73,7 +73,7 @@ const ProjectForm: React.FC<ProjectFormProps> = ({history}) => {
             />
         </Form.Group>
     const projectCreationDateInputField =
-        <Form.Group as={Col} controlId="formGridProjectCreationDate">
+        <Form.Group className="col-sm-12 col-md-4 col-lg-4 col-xl-4" controlId="formGridProjectCreationDate">
             <Form.Label>Дата создания договора</Form.Label>
             <Form.Control required autoComplete="off"
                           type="test" name="projectCreationDate"
@@ -81,7 +81,7 @@ const ProjectForm: React.FC<ProjectFormProps> = ({history}) => {
             />
         </Form.Group>
     const projectOwnerInputField =
-        <Form.Group as={Col} controlId="formGridProjectOwner">
+        <Form.Group className="col-sm-12 col-md-4 col-lg-4 col-xl-4" controlId="formGridProjectOwner">
             <Form.Label>Заказчик</Form.Label>
             <Form.Control required autoComplete="off"
                           type="test" name="projectOwner"
@@ -89,7 +89,7 @@ const ProjectForm: React.FC<ProjectFormProps> = ({history}) => {
             />
         </Form.Group>
     const projectDescriptionInputField =
-        <Form.Group as={Col} controlId="formGridProjectDescription">
+        <Form.Group className="col" controlId="formGridProjectDescription">
             <Form.Label>Описание</Form.Label>
             <Form.Control required autoComplete="off"
                           as="textarea"
@@ -102,7 +102,7 @@ const ProjectForm: React.FC<ProjectFormProps> = ({history}) => {
     return (
         <Container>
             <MyToast show={show} message={messageText} type={messageType}/>
-            <Card className={"border border-dark"}>
+            <Card className="border border-dark m-3">
                 <Card.Header>
                     <FontAwesomeIcon icon={faFolderPlus}/>&nbsp;Новый проект
                 </Card.Header>
@@ -110,14 +110,13 @@ const ProjectForm: React.FC<ProjectFormProps> = ({history}) => {
                     <Card.Body>
                         <Form.Row>
                             {projectContractInputField}
-                            {projectNameInputField}
-                        </Form.Row>
-                        <Form.Row>
-                            {projectAddressInputField}
                             {projectCreationDateInputField}
-                        </Form.Row>
-                        <Form.Row>
                             {projectOwnerInputField}
+                        </Form.Row>
+
+                        <Form.Row>
+                            {projectNameInputField}
+                            {projectAddressInputField}
                         </Form.Row>
                         <Form.Row>
                             {projectDescriptionInputField}

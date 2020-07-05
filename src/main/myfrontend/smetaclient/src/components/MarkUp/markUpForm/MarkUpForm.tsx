@@ -54,17 +54,17 @@ const MarkUpForm: React.FC<MarkUpFormProps> = ({history, match}) => {
     };
 
     return (
-        <Container className="text-center col-5">
+        <Container className="text-center col-sm col-md-5 col-lg-4 col-xl-3">
             <MyToast show={show} message={messageText} type={messageType}/>
-            <Card className={"border border-dark"}>
+            <Card className="border border-dark m-3">
                 <Card.Header>
                     <FontAwesomeIcon icon={faPercent}/>&nbsp;Наценка
                 </Card.Header>
                 <Form onSubmit={update} id="markUpFormId">
                     <Card.Body>
-                        <Form.Row>
+                        <Form.Row className="justify-content-center">
                             <Form.Group as={Row} controlId="formPlaintextMarkUpName">
-                                <Form.Label column sm="9">
+                                <Form.Label column sm="7">
                                     {markUpName}
                                 </Form.Label>
                                 <Col sm="3">

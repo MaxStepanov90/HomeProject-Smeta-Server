@@ -55,7 +55,7 @@ const EstimateDetailForm: React.FC<EstimateDetailFormProps> = ({history}) => {
     };
 
     const estimateDetailNameInputField =
-        <Form.Group as={Col} controlId="formGridName">
+        <Form.Group className="col" controlId="formGridName">
             <Form.Label>Наименование позиции</Form.Label>
             <Form.Control required autoComplete="off"
                           type="test" name="name"
@@ -65,7 +65,7 @@ const EstimateDetailForm: React.FC<EstimateDetailFormProps> = ({history}) => {
         </Form.Group>
 
     const estimateDetailUnitInputField =
-        <Form.Group as={Col} controlId="formGridUnit">
+        <Form.Group className="col" controlId="formGridUnit">
             <Form.Label>Ед.изм.</Form.Label>
             <Form.Control required autoComplete="off"
                           type="test" name="unit"
@@ -75,7 +75,7 @@ const EstimateDetailForm: React.FC<EstimateDetailFormProps> = ({history}) => {
         </Form.Group>
 
     const estimateDetailQuantityInputField =
-        <Form.Group as={Col} controlId="formGridQuantity">
+        <Form.Group className="col" controlId="formGridQuantity">
             <Form.Label>Количество</Form.Label>
             <Form.Control required autoComplete="off"
                           type="test" name="quantity"
@@ -85,7 +85,7 @@ const EstimateDetailForm: React.FC<EstimateDetailFormProps> = ({history}) => {
         </Form.Group>
 
     const estimateDetailPriceInputField =
-        <Form.Group as={Col} controlId="formGridPrice">
+        <Form.Group className="col" controlId="formGridPrice">
             <Form.Label>Цена</Form.Label>
             <Form.Control required autoComplete="off"
                           type="test" name="price"
@@ -95,7 +95,7 @@ const EstimateDetailForm: React.FC<EstimateDetailFormProps> = ({history}) => {
         </Form.Group>
 
     const estimateDetailCategoryInputField =
-        <Form.Group as={Col} controlId="formGridCategory">
+        <Form.Group className="col-sm-12 col-md col-lg col-xl" controlId="formGridCategory">
             <Form.Label>Категория</Form.Label>
             <Form.Control required as="select"
                           custom onChange={e => setEstimateDetailFormCategory(e.target.value)}
@@ -109,7 +109,7 @@ const EstimateDetailForm: React.FC<EstimateDetailFormProps> = ({history}) => {
     return (
         <Container>
             <MyToast show={show} message={messageText} type={messageType}/>
-            <Card className={"border border-dark"}>
+            <Card className="border border-dark m-3">
                 <Card.Header>
                     <FontAwesomeIcon icon={faPlus}/>&nbsp;Новая позиция
                 </Card.Header>
@@ -126,10 +126,10 @@ const EstimateDetailForm: React.FC<EstimateDetailFormProps> = ({history}) => {
                     </Form.Row>
                 </Card.Body>
                 <Card.Footer style={{"textAlign": "right"}}>
-                    <Button size="sm" variant="success" type="submit">
+                    <Button variant="success" type="submit">
                         <FontAwesomeIcon icon={faSave}/>&nbsp;Сохранить
                     </Button>{' '}
-                    <Button size="sm" variant="info" type="button"
+                    <Button variant="info" type="button"
                             onClick={() => estimateDetailList(id)}>
                         <FontAwesomeIcon icon={faFolderOpen}/>&nbsp;Вернуться назад
                     </Button>

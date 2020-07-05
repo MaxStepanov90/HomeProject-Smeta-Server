@@ -3,6 +3,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faMarker} from "@fortawesome/free-solid-svg-icons";
 import {FormCheck} from "react-bootstrap";
 import {IEstimateDetail} from "../../interfaces/IEstimateDetail";
+import Table from "react-bootstrap/Table";
 
 interface TabCategoryTableProps {
     array: IEstimateDetail[],
@@ -16,13 +17,13 @@ export const TabCategoryTable: React.FC<TabCategoryTableProps> = ({array, onChan
     }
 
     return (
-        <table className="table table-hover">
+        <Table responsive="sm" bordered>
             <thead>
             <tr>
                 <th><FontAwesomeIcon icon={faMarker}/></th>
-                <th>Наименование позиции</th>
-                <th>Ед.изм</th>
-                <th>Кол-во</th>
+                <th>Наименование</th>
+                <th>Ед</th>
+                <th>Кол</th>
                 <th>Цена</th>
                 <th>Стоимость</th>
             </tr>
@@ -30,7 +31,7 @@ export const TabCategoryTable: React.FC<TabCategoryTableProps> = ({array, onChan
             <tbody>
             {array.length === 0 ?
                 <tr>
-                    <td align="center" colSpan={6}>Нет доступных позиций.</td>
+                    <td align="left" colSpan={12}>Нет доступных позиций.</td>
                 </tr> :
                 array.map((arrayItem: IEstimateDetail) => (
                     <tr key={arrayItem.id}
@@ -51,6 +52,6 @@ export const TabCategoryTable: React.FC<TabCategoryTableProps> = ({array, onChan
                     </tr>
                 ))}
             </tbody>
-        </table>
+        </Table>
     )
 }

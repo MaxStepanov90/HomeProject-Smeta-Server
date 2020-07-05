@@ -11,11 +11,9 @@ type ProjectListTableProps = {
 export const ProjectListTable: React.FC<ProjectListTableProps> = ({projects}) => {
 
     return (
-        <Table bordered hover striped>
+        <Table responsive="sm" bordered>
             <thead>
             <tr>
-                <th>Номер</th>
-                <th>Дата</th>
                 <th>Название</th>
                 <th>Адрес</th>
                 <th>Заказчик</th>
@@ -24,7 +22,7 @@ export const ProjectListTable: React.FC<ProjectListTableProps> = ({projects}) =>
             <tbody>
             {projects.length === 0 ?
                 <tr>
-                    <td align="center" colSpan={6}>Нет доступных проектов.</td>
+                    <td align="left" colSpan={12}>Нет доступных проектов.</td>
                 </tr> :
                 projects.map((project: IProject) => (
                     <ProjectItem key={project.id}

@@ -22,9 +22,9 @@ function App() {
     return (
         <Router>
             <NavigationBar/>
-            <TabContainer>
-                <Row>
-                    <Col lg={12} className="margin-top">
+            <TabContainer >
+                <Row >
+                    <Col lg={12}>
                         <Switch>
                             <Route path="/" exact component={Welcome}/>
                             <Route path="/addProject" component={ProjectForm}/>

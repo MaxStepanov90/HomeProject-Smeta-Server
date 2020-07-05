@@ -21,9 +21,9 @@ const MarkUpList: React.FC = () => {
     }, [dispatch])
 
     return (
-        <Container className="text-center col-5">
+        <Container className="text-center col-sm col-md-5 col-lg-4 col-xl-3">
             <MyToast show={show} message={messageText} type={messageType}/>
-            <Card className={"border border-dark"}>
+            <Card className="border border-dark m-3">
                 <Card.Header>
                     <FontAwesomeIcon icon={faPercent}/>&nbsp;Наценки
                 </Card.Header>

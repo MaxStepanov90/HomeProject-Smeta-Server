@@ -1,21 +1,21 @@
 import React from "react";
 import {Nav, Navbar} from "react-bootstrap";
-import {Link} from "react-router-dom";
 
 
 export const NavigationBar: React.FC = () => {
     return (
 
-        <Navbar bg="dark" variant="dark">
-            <Link to={""} className="navbar-brand">
-                РемСмет
-            </Link>
-            <Nav className="mr-auto">
-                <Link to={"/addProject"} className="nav-link">Создать проект</Link>
-                <Link to={"/projects"} className="nav-link">Список проектов</Link>
-                <Link to={"/markUps"} className="nav-link">Наценки</Link>
-                <Link to={"/info"} className="nav-link">Контакты</Link>
-            </Nav>
+        <Navbar expand="sm" bg="light">
+            <Navbar.Brand href={"/"}>РемСмет</Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+            <Navbar.Collapse id="basic-navbar-nav">
+                <Nav className="mr-auto">
+                    <Nav.Link href={"/addProject"}>Создать проект</Nav.Link>
+                    <Nav.Link href={"/projects"}>Список проектов</Nav.Link>
+                    <Nav.Link href={"/markUps"}>Наценки</Nav.Link>
+                    <Nav.Link href={"/info"} disabled={true}>Контакты</Nav.Link>
+                </Nav>
+            </Navbar.Collapse>
         </Navbar>
     )
 }

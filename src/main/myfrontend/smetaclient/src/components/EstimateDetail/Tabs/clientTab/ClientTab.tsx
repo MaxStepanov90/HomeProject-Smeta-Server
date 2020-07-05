@@ -25,14 +25,14 @@ export const ClientTab: React.FC<TabClientProps> = (
                                       sumOfWorksWithMarkUp={sumOfWorksWithMarkUp}
                                       sumOfMaterialsWithMarkUp={sumOfMaterialsWithMarkUp}
                 />
-                <div className="container-fluid mb-2">
+                <div className="my-2">
                     <Link to={{pathname: "/addPayment", state: {estimateId: estimate.id}}}
                           className="btn btn-sm btn-primary">
                         <FontAwesomeIcon icon={faPlusSquare}/>&nbsp;
                         Оплатить
                     </Link>
                 </div>
-                <div className="container-fluid">
+                <div className="my-2">
                     <ClientTabTable estimateDetails={estimateDetails}/>
                 </div>
             </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import {IEstimateDetail} from "../../../../interfaces/IEstimateDetail";
+import Table from "react-bootstrap/Table";
 
 type TabClientTableProps = {
     estimateDetails: IEstimateDetail []
@@ -8,20 +9,20 @@ type TabClientTableProps = {
 export const ClientTabTable: React.FC<TabClientTableProps> = ({estimateDetails}) => {
 
     return (
-        <table className="table table-hover">
+        <Table responsive="sm" bordered>
             <thead>
             <tr>
-                <th>Наименование позиции</th>
-                <th>Ед.изм</th>
-                <th>Кол-во</th>
+                <th>Наименование</th>
+                <th>Ед</th>
+                <th>Кол</th>
                 <th>Цена</th>
-                <th>Стоимость</th>
+                <th>Стоим</th>
             </tr>
             </thead>
             <tbody>
             {estimateDetails.length === 0 ?
                 <tr>
-                    <td>Нет доступных позиций.</td>
+                    <td align="left" colSpan={12}>Нет доступных позиций.</td>
                 </tr> :
                 estimateDetails.map((estimateDetail: IEstimateDetail) => (
                     <tr key={estimateDetail.id}
@@ -36,6 +37,6 @@ export const ClientTabTable: React.FC<TabClientTableProps> = ({estimateDetails})
                     </tr>
                 ))}
             </tbody>
-        </table>
+        </Table>
     )
 }

@@ -1,39 +1,38 @@
 import React from "react";
-import ButtonGroup from "react-bootstrap/ButtonGroup";
 import {Button} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTrash} from "@fortawesome/free-solid-svg-icons";
 import {IEstimateDetail} from "../../../../interfaces/IEstimateDetail";
 import {useDispatch} from "react-redux";
 import {deleteEstimateDetail} from "../../../../service/actions/estimateDetailActions";
+import Table from "react-bootstrap/Table";
 
 type TabGeneralTableProps = {
     estimateDetails: IEstimateDetail[],
 }
 export const GeneralTabTable: React.FC<TabGeneralTableProps> = (
     {estimateDetails}
-    ) => {
+) => {
     const dispatch = useDispatch()
 
     return (
-        <table className="table table-hover">
+        <Table responsive="sm" bordered>
             <thead>
             <tr>
                 <th>Категория</th>
-                <th>Наименование позиции</th>
-                <th>Ед.изм</th>
-                <th>Кол-во</th>
+                <th>Наименование</th>
+                <th>Ед</th>
+                <th>Кол</th>
                 <th>Цена</th>
-                <th>Стоимость</th>
+                <th>Стоим</th>
                 <th>Цена Клиента</th>
                 <th>Стоим. Клиента</th>
-                <th>Ред.</th>
             </tr>
             </thead>
             <tbody>
             {estimateDetails.length === 0 ?
                 <tr>
-                    <td align="center" colSpan={6}>Нет доступных позиций.</td>
+                    <td align="left" colSpan={12}>Нет доступных позиций.</td>
                 </tr> :
                 estimateDetails.map((estimateDetail: IEstimateDetail) => (
                     <tr key={estimateDetail.id}
@@ -48,17 +47,16 @@ export const GeneralTabTable: React.FC<TabGeneralTableProps> = (
                         <td>{estimateDetail.cost}</td>
                         <td>{estimateDetail.priceClient}</td>
                         <td>{estimateDetail.costClient}</td>
-                        <td>
-                            <ButtonGroup>
-                                <Button size="sm" variant="outline-danger"
-                                        onClick={() => dispatch(deleteEstimateDetail(estimateDetail.id))}>
-                                    <FontAwesomeIcon icon={faTrash}/>
-                                </Button>
-                            </ButtonGroup>
+                        <td className="text-center">
+                            <Button
+                                variant="outline-danger"
+                                    onClick={() => dispatch(deleteEstimateDetail(estimateDetail.id))}>
+                                <FontAwesomeIcon icon={faTrash}/>
+                            </Button>
                         </td>
                     </tr>
                 ))}
             </tbody>
-        </table>
+        </Table>
     )
 }

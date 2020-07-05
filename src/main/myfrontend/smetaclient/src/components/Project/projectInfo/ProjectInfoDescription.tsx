@@ -25,7 +25,7 @@ export const ProjectInfoDescription: React.FC<ProjectInfoDescriptionProps> = ({e
 
     return (
         <div className="row justify-content-between">
-            <div className="col-5">
+            <div className="col-sm col-md-5 col-lg-5 col-xl-5">
                 <Container>
                     <div className="row">
                         <div className="col">
@@ -39,7 +39,7 @@ export const ProjectInfoDescription: React.FC<ProjectInfoDescriptionProps> = ({e
                     <DescriptionRaw title={"Описание"} value={project.description}/>
                 </Container>
             </div>
-            <div className="col-7">
+            <div className="col-sm col-md-7 col-lg-7 col-xl-7">
                 <Container>
                     {estimates.length !== 0 ?
                         <div>

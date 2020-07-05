@@ -46,7 +46,7 @@ const EstimateDetailsTabs: React.FC<EstimateDetailsTabsProps> = ({match}) => {
     }, [dispatch])
 
     const downloadExcelByCategory = (category: string): void => {
-        fetch("http://localhost:8080/remsmet/download/excel/estimateId/"
+        fetch("/download/excel/estimateId/"
             + id + "/category/" + category, {
             method: 'GET'
         }).then(response => {
@@ -161,7 +161,7 @@ const EstimateDetailsTabs: React.FC<EstimateDetailsTabsProps> = ({match}) => {
         <Fragment>
             <MyToast show={show} message={messageText} type={messageType}/>
             <div className="border border-dark bg-white m-3">
-                <Tabs id="estimateDetailTabs"
+                <Tabs className="responsive" id="estimateDetailTabs"
                       activeKey={activeTab}
                       onSelect={(activeTab: string) => handleSelect(activeTab)}>
                     <Tab eventKey={1} title="Общая смета">

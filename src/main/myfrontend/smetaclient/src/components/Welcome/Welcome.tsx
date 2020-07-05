@@ -5,7 +5,7 @@ import {Container} from "react-bootstrap";
 export const Welcome: React.FC = () => {
     return (
         <Container>
-            <Jumbotron className=" text-center">
+            <Jumbotron className="text-center m-3">
                 <h1>РемСмет</h1>
                 <blockquote className="blockquote">
                     <p>

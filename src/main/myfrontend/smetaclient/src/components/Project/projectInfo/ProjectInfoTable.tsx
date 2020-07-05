@@ -14,21 +14,20 @@ export const ProjectInfoTable: React.FC<EstimatesTableProps> = ({estimates, proj
     return (
         <Fragment>
             <ProjectInfoButtonGroup projectId={projectId}/>
-            <Table bordered hover striped>
+            <Table responsive="sm" bordered>
                 <thead>
                 <tr>
                     <th>Смета</th>
-                    <th>Договорная цена</th>
+                    <th>Стоимость</th>
                     <th>Выполнено</th>
                     <th>Оплачено</th>
-                    <th>К оплате</th>
-                    <th></th>
+                    <th>Итого</th>
                 </tr>
                 </thead>
                 <tbody>
                 {estimates.length === 0 ?
                     <tr>
-                        <td align="center" colSpan={6}>Нет доступных смет.</td>
+                        <td align="left" colSpan={12}>Нет доступных смет.</td>
                     </tr> :
                     estimates.map((estimate: IEstimate) => (
                         <EstimateItem key={estimate.id}

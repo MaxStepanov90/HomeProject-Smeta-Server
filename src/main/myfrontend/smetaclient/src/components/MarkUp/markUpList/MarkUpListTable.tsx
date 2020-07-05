@@ -1,13 +1,7 @@
 import React from "react";
 import Table from "react-bootstrap/Table";
-import ButtonGroup from "react-bootstrap/ButtonGroup";
 import {Link} from "react-router-dom";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faEye, faTrash} from "@fortawesome/free-solid-svg-icons";
-import {Button} from "react-bootstrap";
 import {IMarkUp} from "../../../interfaces/IMarkUp";
-import {useDispatch} from "react-redux";
-import {deleteMarkUp} from "../../../service/actions/markUpActions";
 
 type MarkUpListTableProps = {
     markUps: IMarkUp[];
@@ -15,10 +9,8 @@ type MarkUpListTableProps = {
 
 export const MarkUpListTable: React.FC<MarkUpListTableProps> = ({markUps}) => {
 
-    const dispatch = useDispatch()
-
     return (
-        <Table bordered hover striped>
+        <Table responsive="sm" bordered>
             <thead>
             <tr>
                 <th>Категория</th>
@@ -28,24 +20,16 @@ export const MarkUpListTable: React.FC<MarkUpListTableProps> = ({markUps}) => {
             <tbody>
             {markUps.length === 0 ?
                 <tr>
-                    <td align="center" colSpan={6}>Нет доступных наценок.</td>
+                    <td align="left" colSpan={12}>Нет доступных наценок.</td>
                 </tr> :
                 markUps.map((markUp: IMarkUp) => (
                     <tr key={markUp.id}>
-                        <td>{markUp.markUpName}</td>
-                        <td>{markUp.markUpPercent}</td>
                         <td>
-                            <ButtonGroup>
-                                <Link to={"markUp/" + markUp.id}
-                                      className="btn btn-sm btn-outline-primary">
-                                    <FontAwesomeIcon icon={faEye}/>
-                                </Link>
-                                <Button size="sm" variant="outline-danger"
-                                        onClick={() => dispatch(deleteMarkUp(markUp.id))}>
-                                    <FontAwesomeIcon icon={faTrash}/>
-                                </Button>
-                            </ButtonGroup>
+                            <Link to={"markUp/"+markUp.id} className="text-dark">
+                                {markUp.markUpName}
+                            </Link>
                         </td>
+                        <td>{markUp.markUpPercent}</td>
                     </tr>
                 ))
             }

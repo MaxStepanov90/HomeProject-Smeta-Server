@@ -34,14 +34,14 @@ export const GeneralTab: React.FC<TabGeneralProps> = (
                                        sumOfMarkUpFromWorks={sumOfMarkUpFromWorks}
                                        sumOfMarkUpFromMaterials={sumOfMarkUpFromMaterials}
                 />
-                <div className="container-fluid mb-2">
+                <div className="my-2">
                     <Link to={{pathname: "/addEstimateDetail", state: {estimateId: estimate.id}}}
                           className="btn btn-sm btn-primary">
                         <FontAwesomeIcon icon={faPlusSquare}/>&nbsp;
                         Добавить позицию
                     </Link>
                 </div>
-                <div className="container-fluid">
+                <div className="my-2">
                     <GeneralTabTable estimateDetails={estimateDetails}/>
                 </div>
             </div>
