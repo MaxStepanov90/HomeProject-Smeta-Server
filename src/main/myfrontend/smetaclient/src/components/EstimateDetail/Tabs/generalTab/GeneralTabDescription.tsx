@@ -1,7 +1,9 @@
 import React from "react";
 import {TabDescriptionColumn} from "../../../Generic/TabDescriptionColumn";
 import {DescriptionRaw} from "../../../Generic/DescrpirtionRaw";
-import {Col, Container, Row} from "react-bootstrap";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 type TabGeneralDescriptionProps = {
     estimateName: string,

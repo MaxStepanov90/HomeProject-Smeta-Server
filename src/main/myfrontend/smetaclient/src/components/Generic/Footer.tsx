@@ -1,5 +1,7 @@
 import React from "react";
-import {Col, Container, Navbar} from "react-bootstrap";
+import Navbar from "react-bootstrap/Navbar";
+import Container from "react-bootstrap/Container";
+import Col from "react-bootstrap/Col";
 
 export const Footer: React.FC = () => {
 

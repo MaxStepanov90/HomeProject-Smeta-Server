@@ -1,5 +1,4 @@
 import React, {FormEvent, useEffect, useState} from "react";
-import {Button, Card, Col, Container, Form} from "react-bootstrap";
 import {MyToast} from "../../Generic/MyToast/MyToast";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faList, faPercent, faSave} from "@fortawesome/free-solid-svg-icons";
@@ -8,6 +7,11 @@ import {IMarkUp} from "../../../interfaces/IMarkUp";
 import {findMarkUpById, updateMarkUp} from "../../../service/actions/markUpActions";
 import {useDispatch, useSelector} from "react-redux";
 import {IRootState} from "../../../interfaces/IRootState";
+import Container from "react-bootstrap/Container";
+import Card from "react-bootstrap/Card";
+import Form from "react-bootstrap/Form";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 
 interface RouterProps {
     id: string;

@@ -1,12 +1,13 @@
 import React, {useEffect} from "react";
 import {MyToast} from "../../Generic/MyToast/MyToast";
-import {Card, Container} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPercent} from "@fortawesome/free-solid-svg-icons";
 import {MarkUpListTable} from "./MarkUpListTable";
 import {useDispatch, useSelector} from "react-redux";
 import {findAllMarkUps} from "../../../service/actions/markUpActions";
 import {IRootState} from "../../../interfaces/IRootState";
+import Container from "react-bootstrap/Container";
+import Card from "react-bootstrap/Card";
 
 const MarkUpList: React.FC = () => {
 

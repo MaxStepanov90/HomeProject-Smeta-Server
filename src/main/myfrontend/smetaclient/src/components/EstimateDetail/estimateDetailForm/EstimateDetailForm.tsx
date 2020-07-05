@@ -1,5 +1,4 @@
 import React, {FormEvent, useState} from "react";
-import {Button, Card, Col, Container, Form} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faFolderOpen, faPlus, faSave} from "@fortawesome/free-solid-svg-icons";
 import {MyToast} from "../../Generic/MyToast/MyToast";
@@ -7,6 +6,10 @@ import {useDispatch, useSelector} from "react-redux";
 import {Category} from "../../../utils/Category";
 import {IRootState} from "../../../interfaces/IRootState";
 import {saveNewEstimateDetail} from "../../../service/actions/estimateDetailActions";
+import Form from "react-bootstrap/Form";
+import Container from "react-bootstrap/Container";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
 
 interface RouterProps {
     estimateId: any;

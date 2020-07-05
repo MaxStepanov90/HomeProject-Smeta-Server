@@ -1,5 +1,4 @@
 import React, {FormEvent, useState} from "react";
-import {Button, Card, Col, Container, Form} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faFolderOpen, faPlus, faSave} from "@fortawesome/free-solid-svg-icons";
 import {MyToast} from "../../Generic/MyToast/MyToast";
@@ -7,6 +6,11 @@ import {useDispatch, useSelector} from "react-redux";
 import {IRootState} from "../../../interfaces/IRootState";
 import {Category} from "../../../utils/Category";
 import {saveNewPayment} from "../../../service/actions/paymentActions";
+import Container from "react-bootstrap/Container";
+import Card from "react-bootstrap/Card";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Col from "react-bootstrap/Col";
 
 
 interface RouterProps {

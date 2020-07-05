@@ -1,12 +1,14 @@
 import React, {useEffect} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faFolderOpen, faInfo} from "@fortawesome/free-solid-svg-icons";
-import {Button, Card, Container} from "react-bootstrap";
 import {PaymentListTable} from "./PaymentListTable";
 import {MyToast} from "../../Generic/MyToast/MyToast";
 import {findAllPaymentsByProjectId} from "../../../service/actions/paymentActions";
 import {useDispatch, useSelector} from "react-redux";
 import {IRootState} from "../../../interfaces/IRootState";
+import Container from "react-bootstrap/Container";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
 
 type PaymentListProps = {
     history: any,

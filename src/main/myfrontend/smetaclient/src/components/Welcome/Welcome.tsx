@@ -1,6 +1,6 @@
 import React from "react";
 import Jumbotron from "react-bootstrap/Jumbotron";
-import {Container} from "react-bootstrap";
+import Container from "react-bootstrap/Container";
 
 export const Welcome: React.FC = () => {
     return (

@@ -1,5 +1,4 @@
 import React, {Fragment, useEffect, useState} from "react";
-import {Tab, Tabs} from "react-bootstrap";
 import {GeneralTab} from "./generalTab/GeneralTab";
 import {CategoryTab} from "./categoryTab/CategoryTab";
 import {ClientTab} from "./clientTab/ClientTab";
@@ -11,6 +10,8 @@ import {findEstimateById} from "../../../service/actions/estimateActions";
 import {findAllPaymentsByEstimateId} from "../../../service/actions/paymentActions";
 import {Category} from "../../../utils/Category";
 import {IRootState} from "../../../interfaces/IRootState";
+import Tabs from "react-bootstrap/Tabs";
+import Tab from "react-bootstrap/Tab";
 
 interface RouterProps {
     estimateId: any;

@@ -1,6 +1,6 @@
 import React from "react";
-import {Toast} from "react-bootstrap";
 import {MyToastMessageType} from "../../../utils/MyToastMessageType";
+import Toast from "react-bootstrap/Toast";
 
 type MyToastProps = {
     show: boolean,
