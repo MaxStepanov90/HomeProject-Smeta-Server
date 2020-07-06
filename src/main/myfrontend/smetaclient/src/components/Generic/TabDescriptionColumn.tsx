@@ -5,10 +5,9 @@ type TabDescriptionColumnProps = {
     title: string,
     dataOfWorks: number | string,
     dataOfMaterials: number | string,
-    dataOfAll: number | string
 }
 export const TabDescriptionColumn: React.FC<TabDescriptionColumnProps> = (
-    {title, dataOfWorks, dataOfMaterials, dataOfAll}
+    {title, dataOfWorks, dataOfMaterials}
 ) => {
 
     return (
@@ -21,9 +20,6 @@ export const TabDescriptionColumn: React.FC<TabDescriptionColumnProps> = (
             </div>
             <div className="row">
                 {dataOfMaterials}
-            </div>
-            <div className="row">
-                {dataOfAll}
             </div>
         </Col>
     )

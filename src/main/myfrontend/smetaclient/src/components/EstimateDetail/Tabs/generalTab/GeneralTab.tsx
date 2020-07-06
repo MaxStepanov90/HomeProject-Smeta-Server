@@ -11,17 +11,12 @@ type TabGeneralProps = {
     estimate: IEstimate,
     sumOfWorks: number,
     sumOfMaterials: number,
-    sumOfMarkUpFromWorks: number,
-    sumOfMarkUpFromMaterials: number,
-    sumOfWorksWithMarkUp: number,
-    sumOfMaterialsWithMarkUp: number,
     estimateDetails: IEstimateDetail[],
 }
 export const GeneralTab: React.FC<TabGeneralProps> = (
     {
-        estimate, sumOfWorks, sumOfMaterials, sumOfMarkUpFromWorks,
-        sumOfMarkUpFromMaterials, sumOfWorksWithMarkUp, sumOfMaterialsWithMarkUp,
-        estimateDetails}) => {
+        estimate, sumOfWorks, sumOfMaterials, estimateDetails
+    }) => {
 
     return (
         <Fragment>
@@ -29,10 +24,6 @@ export const GeneralTab: React.FC<TabGeneralProps> = (
                 <GeneralTabDescription estimateName={estimate.name}
                                        sumOfWorks={sumOfWorks}
                                        sumOfMaterials={sumOfMaterials}
-                                       sumOfWorksWithMarkUp={sumOfWorksWithMarkUp}
-                                       sumOfMaterialsWithMarkUp={sumOfMaterialsWithMarkUp}
-                                       sumOfMarkUpFromWorks={sumOfMarkUpFromWorks}
-                                       sumOfMarkUpFromMaterials={sumOfMarkUpFromMaterials}
                 />
                 <div className="my-2">
                     <Link to={{pathname: "/addEstimateDetail", state: {estimateId: estimate.id}}}

@@ -26,12 +26,10 @@ export const ClientTabDescription: React.FC<TabClientDescriptionProps> = (
                         <TabDescriptionColumn title={"Категория:"}
                                               dataOfWorks={"Работы:"}
                                               dataOfMaterials={"Материалы:"}
-                                              dataOfAll={"Итого:"}
                         />
                         <TabDescriptionColumn title={"Стоимость"}
                                               dataOfWorks={sumOfWorksWithMarkUp}
                                               dataOfMaterials={sumOfMaterialsWithMarkUp}
-                                              dataOfAll={sumOfWorksWithMarkUp + sumOfMaterialsWithMarkUp}
                         />
                         <Col className="align-self-center">
                             <h4>{sumOfWorksWithMarkUp + sumOfMaterialsWithMarkUp}</h4>

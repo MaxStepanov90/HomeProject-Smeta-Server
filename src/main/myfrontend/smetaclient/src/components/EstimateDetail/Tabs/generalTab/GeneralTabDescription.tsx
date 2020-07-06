@@ -9,19 +9,13 @@ type TabGeneralDescriptionProps = {
     estimateName: string,
     sumOfWorks: number,
     sumOfMaterials: number,
-    sumOfMarkUpFromWorks: number,
-    sumOfMarkUpFromMaterials: number,
-    sumOfWorksWithMarkUp: number,
-    sumOfMaterialsWithMarkUp: number,
 }
 export const GeneralTabDescription: React.FC<TabGeneralDescriptionProps> = (
     {
-        estimateName, sumOfWorks, sumOfMaterials, sumOfWorksWithMarkUp,
-        sumOfMaterialsWithMarkUp,
+        estimateName, sumOfWorks, sumOfMaterials
     }) => {
 
-    const dataOfAll = Math.round((sumOfWorks + sumOfMaterials) * 100) / 100;
-    const sumOfAll = Math.round((sumOfWorksWithMarkUp + sumOfMaterialsWithMarkUp) * 100) / 100;
+    const sumOfAll = Math.round((sumOfWorks + sumOfMaterials) * 100) / 100;
 
     return (
         <Row className="justify-content-between">
@@ -34,12 +28,10 @@ export const GeneralTabDescription: React.FC<TabGeneralDescriptionProps> = (
                         <TabDescriptionColumn title={"Категория:"}
                                               dataOfWorks={"Работы:"}
                                               dataOfMaterials={"Материалы:"}
-                                              dataOfAll={"Итого:"}
                         />
                         <TabDescriptionColumn title={"Стоимость"}
                                               dataOfWorks={sumOfWorks}
                                               dataOfMaterials={sumOfMaterials}
-                                              dataOfAll={dataOfAll}
                         />
                         <Col className="align-self-center">
                             <h4>{sumOfAll}</h4>

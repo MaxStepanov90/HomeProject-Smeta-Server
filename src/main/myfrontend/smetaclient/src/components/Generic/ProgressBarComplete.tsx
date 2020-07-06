@@ -9,7 +9,7 @@ type ProgressBarCompleteProps = {
 }
 export const ProgressBarComplete: React.FC<ProgressBarCompleteProps> = (
     {valueAll, valueDone, valuePay, percent}
-    ) => {
+) => {
 
     return (
         <div className="row">
@@ -22,20 +22,25 @@ export const ProgressBarComplete: React.FC<ProgressBarCompleteProps> = (
                 </div>
                 <div className="row justify-content-around">
                     <div className="col">
-                        <div className="col my-2">Всего</div>
-                        <div className="col my-2">{valueAll}</div>
+                        <div className="col">
+                            <div className="col my-2">Всего</div>
+                            <div className="col my-2">{valueAll}</div>
+                        </div>
+                        <div className="col">
+                            <div className="col my-2">Выполнено</div>
+                            <div className="col my-2">{valueDone}</div>
+                        </div>
                     </div>
+
                     <div className="col">
-                        <div className="col my-2">Выполнено</div>
-                        <div className="col my-2">{valueDone}</div>
-                    </div>
-                    <div className="col">
-                        <div className="col my-2">Оплачено</div>
-                        <div className="col my-2">{valuePay}</div>
-                    </div>
-                    <div className="col">
-                        <div className="col my-2">К Оплате</div>
-                        <div className="col my-2">{valueDone - valuePay}</div>
+                        <div className="col">
+                            <div className="col my-2">Оплачено</div>
+                            <div className="col my-2">{valuePay}</div>
+                        </div>
+                        <div className="col">
+                            <div className="col my-2">Оплатить</div>
+                            <div className="col my-2">{valueDone - valuePay}</div>
+                        </div>
                     </div>
                 </div>
             </div>

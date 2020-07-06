@@ -12,6 +12,7 @@ import {Category} from "../../../utils/Category";
 import {IRootState} from "../../../interfaces/IRootState";
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
+import {log} from "util";
 
 interface RouterProps {
     estimateId: any;
@@ -108,7 +109,8 @@ const EstimateDetailsTabs: React.FC<EstimateDetailsTabsProps> = ({match}) => {
     }
 
     const calcPercentOfEstimateDetailsByCategoryComplete = (sumOfAllComplete: number, sumOfAllWithMarkUp: number): number => {
-        return Math.ceil(sumOfAllComplete / (sumOfAllWithMarkUp / 100))
+        const percent = Math.ceil(sumOfAllComplete / (sumOfAllWithMarkUp / 100))
+        return isNaN(percent) ? 0 : percent;
     }
 
     const handleSelect = (activeTab: string): void => {
@@ -170,10 +172,6 @@ const EstimateDetailsTabs: React.FC<EstimateDetailsTabsProps> = ({match}) => {
                                     estimateDetails={estimateDetails}
                                     sumOfWorks={sumOfWorks}
                                     sumOfMaterials={sumOfMaterials}
-                                    sumOfMarkUpFromWorks={sumOfMarkUpFromWorks}
-                                    sumOfMarkUpFromMaterials={sumOfMarkUpFromMaterials}
-                                    sumOfWorksWithMarkUp={sumOfWorksWithMarkUp}
-                                    sumOfMaterialsWithMarkUp={sumOfMaterialsWithMarkUp}
                         />
                     </Tab>
                     <Tab eventKey={2} title="Смета работ">
