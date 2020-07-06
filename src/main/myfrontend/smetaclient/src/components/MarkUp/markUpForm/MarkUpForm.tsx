@@ -1,7 +1,7 @@
 import React, {FormEvent, useEffect, useState} from "react";
 import {MyToast} from "../../Generic/MyToast/MyToast";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faList, faPercent, faSave} from "@fortawesome/free-solid-svg-icons";
+import {faPercent, faSave, faUndo} from "@fortawesome/free-solid-svg-icons";
 import Row from "react-bootstrap/Row";
 import {IMarkUp} from "../../../interfaces/IMarkUp";
 import {findMarkUpById, updateMarkUp} from "../../../service/actions/markUpActions";
@@ -26,14 +26,15 @@ const MarkUpForm: React.FC<MarkUpFormProps> = ({history, match}) => {
 
     const dispatch = useDispatch()
 
-    const show = useSelector((state: IRootState) => state.app.show)
-    const messageText = useSelector((state: IRootState) => state.app.messageText)
-    const messageType = useSelector((state: IRootState) => state.app.messageType)
+    const {show, messageText, messageType, markUp} = useSelector(
+        (state: IRootState) => ({
+            show: state.app.show,
+            messageText: state.app.messageText,
+            messageType: state.app.messageType,
+            markUp: state.markUps.markUp,
+        }))
 
-    const markUpId = useSelector((state: IRootState) => state.markUps.markUp.id)
-    const markUpName = useSelector((state: IRootState) => state.markUps.markUp.markUpName)
-    const markUpPercent = useSelector((state: IRootState) => state.markUps.markUp.markUpPercent)
-    const [percent, setPercent] = useState(markUpPercent)
+    const [markUpPercent, setMarkUpPercent] = useState(markUp.markUpPercent)
 
     useEffect(() => {
         const markUpId = parseInt(match.params.id)
@@ -44,12 +45,12 @@ const MarkUpForm: React.FC<MarkUpFormProps> = ({history, match}) => {
 
     const update = (event: FormEvent<HTMLFormElement>): void => {
         event.preventDefault();
-        const markUp: IMarkUp = {
-            id: markUpId,
-            markUpName: markUpName,
-            markUpPercent: percent,
+        const newMarkUp: IMarkUp = {
+            id: markUp.id,
+            markUpName: markUp.markUpName,
+            markUpPercent: markUp.markUpPercent,
         }
-        dispatch(updateMarkUp(markUp));
+        dispatch(updateMarkUp(newMarkUp));
         setTimeout(() => markUpList(), 1600);
     };
 
@@ -69,24 +70,31 @@ const MarkUpForm: React.FC<MarkUpFormProps> = ({history, match}) => {
                         <Form.Row className="justify-content-center">
                             <Form.Group as={Row} controlId="formPlaintextMarkUpName">
                                 <Form.Label column sm="7">
-                                    {markUpName}
+                                    {markUp.markUpName}
                                 </Form.Label>
-                                <Col sm="3">
+                                <Col sm="4">
                                     <Form.Control required autoComplete="off"
                                                   type="text" name="percent"
-                                                  value={percent}
-                                                  onChange={event => setPercent(parseInt(event.target.value))}/>
+                                                  value={markUp.markUpPercent}
+                                                  onChange={event => setMarkUpPercent(parseInt(event.target.value))}/>
                                 </Col>
                             </Form.Group>
                         </Form.Row>
                     </Card.Body>
-                    <Card.Footer style={{"textAlign": "right"}}>
-                        <Button size="sm" variant="success" type="submit">
-                            <FontAwesomeIcon icon={faSave}/>&nbsp;Сохранить
-                        </Button>{' '}
-                        <Button size="sm" variant="info" type="button" onClick={() => markUpList()}>
-                            <FontAwesomeIcon icon={faList}/>&nbsp;Список наценок
-                        </Button>
+                    <Card.Footer>
+                        <div className="row justify-content-between">
+                            <div className="col">
+                                <Button size="sm" variant="primary"
+                                         onClick={() => markUpList()}>
+                                    <FontAwesomeIcon icon={faUndo}/>&nbsp;Вернуться
+                                </Button>
+                            </div>
+                            <div className="col">
+                                <Button size="sm" variant="success" type="submit">
+                                    <FontAwesomeIcon icon={faSave}/>&nbsp;Сохранить
+                                </Button>{' '}
+                            </div>
+                        </div>
                     </Card.Footer>
                 </Form>
             </Card>

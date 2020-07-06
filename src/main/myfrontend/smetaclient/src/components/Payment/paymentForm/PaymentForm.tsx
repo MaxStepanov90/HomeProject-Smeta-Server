@@ -1,6 +1,6 @@
 import React, {FormEvent, useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faFolderOpen, faPlus, faSave} from "@fortawesome/free-solid-svg-icons";
+import {faPlus, faSave, faUndo} from "@fortawesome/free-solid-svg-icons";
 import {MyToast} from "../../Generic/MyToast/MyToast";
 import {useDispatch, useSelector} from "react-redux";
 import {IRootState} from "../../../interfaces/IRootState";
@@ -111,7 +111,7 @@ const PaymentForm: React.FC<PaymentFormProps> = ({history}) => {
                         </Button>{' '}
                         <Button size="sm" variant="info" type="button"
                                 onClick={() => estimateDetailList(id)}>
-                            <FontAwesomeIcon icon={faFolderOpen}/>&nbsp;Вернуться назад
+                            <FontAwesomeIcon icon={faUndo}/>&nbsp;Вернуться
                         </Button>
                     </Card.Footer>
                 </Form>

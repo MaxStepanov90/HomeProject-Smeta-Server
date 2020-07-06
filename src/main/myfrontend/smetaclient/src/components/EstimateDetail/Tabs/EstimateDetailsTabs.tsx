@@ -151,8 +151,6 @@ const EstimateDetailsTabs: React.FC<EstimateDetailsTabsProps> = ({match}) => {
     const sumOfMaterialsWithMarkUp = calcEstimateDetailsByCategoryWithMarkUp(estimateDetailsMaterial);
     const sumOfWorksComplete = calcEstimateDetailsByCategoryCompleteTrue(estimateDetailsWork);
     const sumOfMaterialsComplete = calcEstimateDetailsByCategoryCompleteTrue(estimateDetailsMaterial)
-    const sumOfMarkUpFromWorks = Math.round((sumOfWorksWithMarkUp - sumOfWorks) * 100) / 100;
-    const sumOfMarkUpFromMaterials = Math.round((sumOfMaterialsWithMarkUp - sumOfMaterials) * 100) / 100;
     const percentOfWorksComplete = calcPercentOfEstimateDetailsByCategoryComplete(
         sumOfWorksComplete, sumOfWorksWithMarkUp);
     const percentOfMaterialsComplete = calcPercentOfEstimateDetailsByCategoryComplete(

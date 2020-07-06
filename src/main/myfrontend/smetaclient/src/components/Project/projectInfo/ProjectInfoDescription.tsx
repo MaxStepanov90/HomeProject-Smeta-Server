@@ -5,6 +5,8 @@ import {DescriptionRaw} from "../../Generic/DescrpirtionRaw";
 import {IEstimate} from "../../../interfaces/IEstimate.";
 import {useSelector} from "react-redux";
 import {IRootState} from "../../../interfaces/IRootState";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faArrowDown} from "@fortawesome/free-solid-svg-icons";
 
 type ProjectInfoDescriptionProps = {
     estimates: IEstimate[],
@@ -45,7 +47,9 @@ export const ProjectInfoDescription: React.FC<ProjectInfoDescriptionProps> = ({e
                         <div>
                             <DescriptionRaw title={"Всего смет в работе"} value={estimates.length}/>
                             <DescriptionRaw title={"Общая сумма"} value={sumAllEstimateCost(estimates)}/>
-                            <div onClick={() => setVisible(!visible)}>{buttonText}</div>
+                            <div onClick={() => setVisible(!visible)}>
+                                &nbsp;{buttonText}<FontAwesomeIcon icon={faArrowDown}/>
+                            </div>
                         </div>
                         : null}
                     {visible ? estimates.map((estimate: IEstimate) => (

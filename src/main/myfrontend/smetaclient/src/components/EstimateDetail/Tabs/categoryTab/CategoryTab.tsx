@@ -31,14 +31,14 @@ export const CategoryTab: React.FC<TabMaterialsProps> = (
                                 valuePay={valuePay}
                                 percent={percent}
                 />
-                <div className="container-fluid mb-2">
+                <div className="mb-2">
                     <Button size={"sm"} variant="primary"
                             onClick={() => onDownloadExcel(category)}>
                         <FontAwesomeIcon icon={faFileExcel}/>&nbsp;
                         Экспорт в Excel
                     </Button>
                 </div>
-                <div className="container-fluid">
+                <div className="my-2">
                     <TabCategoryTable array={categoryEstimateDetails}
                                       onChange={onChange}
                     />

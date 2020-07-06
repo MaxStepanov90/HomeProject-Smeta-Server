@@ -1,5 +1,4 @@
 import './App.css';
-import {Footer} from "./components/Generic/Footer";
 import {NavigationBar} from "./components/Generic/NavigationBar";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -17,12 +16,13 @@ import MarkUpList from "./components/MarkUp/markUpList/MarkUpList";
 import MarkUpForm from "./components/MarkUp/markUpForm/MarkUpForm";
 import React from "react";
 import TabContainer from "react-bootstrap/TabContainer";
+import {Container} from "react-bootstrap";
 
 function App() {
     return (
         <Router>
             <NavigationBar/>
-            <TabContainer >
+            <Container fluid >
                 <Row >
                     <Col lg={12}>
                         <Switch>
@@ -41,8 +41,7 @@ function App() {
                         </Switch>
                     </Col>
                 </Row>
-            </TabContainer>
-            <Footer/>
+            </Container>
         </Router>
 
     )

@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faFolderOpen, faInfo} from "@fortawesome/free-solid-svg-icons";
+import {faInfo, faUndo} from "@fortawesome/free-solid-svg-icons";
 import {PaymentListTable} from "./PaymentListTable";
 import {MyToast} from "../../Generic/MyToast/MyToast";
 import {findAllPaymentsByProjectId} from "../../../service/actions/paymentActions";
@@ -46,7 +46,7 @@ const PaymentList: React.FC<PaymentListProps> = ({history}) => {
                 <Card.Footer style={{"textAlign": "right"}}>
                     <Button size="sm" variant="info" type="button"
                             onClick={() => paymentList(projectId)}>
-                        <FontAwesomeIcon icon={faFolderOpen}/>&nbsp;Вернуться назад
+                        <FontAwesomeIcon icon={faUndo}/>&nbsp;Вернуться
                     </Button>
                 </Card.Footer>
             </Card>
