@@ -14,7 +14,7 @@ export const ProjectInfoTable: React.FC<EstimatesTableProps> = ({estimates, proj
     return (
         <Fragment>
             <ProjectInfoButtonGroup projectId={projectId}/>
-            <Table responsive="sm" bordered>
+            <Table responsive bordered>
                 <thead>
                 <tr>
                     <th>Смета</th>

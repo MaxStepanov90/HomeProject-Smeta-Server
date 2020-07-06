@@ -17,7 +17,7 @@ export const TabCategoryTable: React.FC<TabCategoryTableProps> = ({array, onChan
     }
 
     return (
-        <Table responsive="sm" bordered>
+        <Table responsive bordered>
             <thead>
             <tr>
                 <th><FontAwesomeIcon icon={faMarker}/></th>

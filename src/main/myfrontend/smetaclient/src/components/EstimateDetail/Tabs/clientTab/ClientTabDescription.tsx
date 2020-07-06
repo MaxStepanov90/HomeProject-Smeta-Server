@@ -17,10 +17,10 @@ export const ClientTabDescription: React.FC<TabClientDescriptionProps> = (
 
     return (
         <Row className="justify-content-between">
-            <div className="col-sm-12 col-md-5 col-lg-5 col-xl-5">
+            <div className="col-sm-10 col-md-5 col-lg-5 col-xl-5">
                 <DescriptionRaw title={"Смета"} value={estimateName}/>
             </div>
-            <Col className="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+            <div className="col-sm-10 col-md-6 col-lg-6 col-xl-6">
                 <Container>
                     <Row>
                         <TabDescriptionColumn title={"Категория:"}
@@ -31,12 +31,12 @@ export const ClientTabDescription: React.FC<TabClientDescriptionProps> = (
                                               dataOfWorks={sumOfWorksWithMarkUp}
                                               dataOfMaterials={sumOfMaterialsWithMarkUp}
                         />
-                        <Col className="align-self-center">
+                        <div className="align-self-center">
                             <h4>{sumOfWorksWithMarkUp + sumOfMaterialsWithMarkUp}</h4>
-                        </Col>
+                        </div>
                     </Row>
                 </Container>
-            </Col>
+            </div>
         </Row>
     )
 }

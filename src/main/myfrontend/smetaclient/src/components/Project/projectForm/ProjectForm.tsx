@@ -129,12 +129,12 @@ const ProjectForm: React.FC<ProjectFormProps> = ({history}) => {
                             {projectDescriptionInputField}
                         </Form.Row>
                     </Card.Body>
-                    <Card.Footer style={{"textAlign": "right"}}>
+                    <Card.Footer style={{"textAlign": "center"}}>
                         <Button size="sm" variant="success" type="submit">
-                            <FontAwesomeIcon icon={faSave}/>&nbsp;Сохранить
+                            <FontAwesomeIcon icon={faSave}/>&nbsp;Создать
                         </Button>{' '}
                         <Button size="sm" variant="info" type="button" onClick={() => projectList()}>
-                            <FontAwesomeIcon icon={faList}/>&nbsp;Список проектов
+                            <FontAwesomeIcon icon={faList}/>&nbsp;Проекты
                         </Button>
                     </Card.Footer>
                 </Form>

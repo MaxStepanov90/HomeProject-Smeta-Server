@@ -10,7 +10,7 @@ type MarkUpListTableProps = {
 export const MarkUpListTable: React.FC<MarkUpListTableProps> = ({markUps}) => {
 
     return (
-        <Table responsive="sm" bordered>
+        <Table responsive bordered>
             <thead>
             <tr>
                 <th>Категория</th>

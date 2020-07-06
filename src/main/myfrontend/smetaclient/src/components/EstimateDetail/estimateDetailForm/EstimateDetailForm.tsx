@@ -128,7 +128,7 @@ const EstimateDetailForm: React.FC<EstimateDetailFormProps> = ({history}) => {
                         {estimateDetailCategoryInputField}
                     </Form.Row>
                 </Card.Body>
-                <Card.Footer style={{"textAlign": "right"}}>
+                <Card.Footer  style={{"textAlign": "center"}}>
                     <Button variant="success" type="submit">
                         <FontAwesomeIcon icon={faSave}/>&nbsp;Сохранить
                     </Button>{' '}

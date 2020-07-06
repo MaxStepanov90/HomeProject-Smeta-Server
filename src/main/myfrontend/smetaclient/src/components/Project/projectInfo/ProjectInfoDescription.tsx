@@ -5,8 +5,8 @@ import {DescriptionRaw} from "../../Generic/DescrpirtionRaw";
 import {IEstimate} from "../../../interfaces/IEstimate.";
 import {useSelector} from "react-redux";
 import {IRootState} from "../../../interfaces/IRootState";
+import {faInfo, faInfoCircle, faStepForward} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faArrowDown} from "@fortawesome/free-solid-svg-icons";
 
 type ProjectInfoDescriptionProps = {
     estimates: IEstimate[],
@@ -30,33 +30,32 @@ export const ProjectInfoDescription: React.FC<ProjectInfoDescriptionProps> = ({e
             <div className="col-sm col-md-5 col-lg-5 col-xl-5">
                 <Container>
                     <div className="row">
-                        <div className="col">
-                            <h5>Информация о проектe</h5>
+                        <div className="col"
+                             onClick={() => setVisible(!visible)}>
+                            <h5>{project.name}</h5>
                         </div>
                     </div>
-                    <DescriptionRaw title={"Название"} value={project.name}/>
-                    <DescriptionRaw title={"Адрес"} value={project.address}/>
-                    <DescriptionRaw title={"Договор"} value={project.contract}/>
-                    <DescriptionRaw title={"Заказчик"} value={project.owner}/>
-                    <DescriptionRaw title={"Описание"} value={project.description}/>
+                    {visible ?
+                        <div>
+                            <DescriptionRaw title={"Адрес"} value={project.address}/>
+                            <DescriptionRaw title={"Договор"} value={project.contract}/>
+                            <DescriptionRaw title={"Заказчик"} value={project.owner}/>
+                            <DescriptionRaw title={"Описание"} value={project.description}/>
+                        </div>
+                        : null}
                 </Container>
             </div>
             <div className="col-sm col-md-7 col-lg-7 col-xl-7">
-                <Container>
-                    {estimates.length !== 0 ?
-                        <div>
-                            <DescriptionRaw title={"Всего смет в работе"} value={estimates.length}/>
-                            <DescriptionRaw title={"Общая сумма"} value={sumAllEstimateCost(estimates)}/>
-                            <div onClick={() => setVisible(!visible)}>
-                                &nbsp;{buttonText}<FontAwesomeIcon icon={faArrowDown}/>
-                            </div>
-                        </div>
-                        : null}
-                    {visible ? estimates.map((estimate: IEstimate) => (
-                        <ProjectInfoProgressBar
-                            key={estimate.id}
-                            estimate = {estimate}/>)) : null}
-                </Container>
+                {visible ?
+                    <Container>
+                        <DescriptionRaw title={"Всего смет"} value={estimates.length}/>
+                        <DescriptionRaw title={"Общая cумма"} value={sumAllEstimateCost(estimates)}/>
+                        {estimates.map((estimate: IEstimate) => (
+                            <ProjectInfoProgressBar
+                                key={estimate.id}
+                                estimate={estimate}/>))}
+                    </Container>
+                    : null}
             </div>
         </div>
     )

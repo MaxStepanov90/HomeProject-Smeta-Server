@@ -9,7 +9,7 @@ type TabClientTableProps = {
 export const ClientTabTable: React.FC<TabClientTableProps> = ({estimateDetails}) => {
 
     return (
-        <Table responsive="sm" bordered>
+        <Table responsive bordered>
             <thead>
             <tr>
                 <th>Наименование</th>

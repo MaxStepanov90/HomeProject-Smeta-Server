@@ -16,7 +16,7 @@ export const GeneralTabTable: React.FC<TabGeneralTableProps> = (
     const dispatch = useDispatch()
 
     return (
-        <Table responsive="sm" bordered>
+        <Table responsive bordered>
             <thead>
             <tr>
                 <th>Категория</th>

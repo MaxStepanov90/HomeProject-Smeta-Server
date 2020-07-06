@@ -7,7 +7,7 @@ type PaymentListTableProps = {
 }
 export const PaymentListTable: React.FC<PaymentListTableProps> = ({payments}) => {
     return (
-        <Table responsive="sm" bordered>
+        <Table responsive bordered>
             <thead>
             <tr>
                 <th scope="col">Дата платежа</th>

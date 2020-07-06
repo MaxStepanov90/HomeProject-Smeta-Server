@@ -11,7 +11,7 @@ type ProjectListTableProps = {
 export const ProjectListTable: React.FC<ProjectListTableProps> = ({projects}) => {
 
     return (
-        <Table responsive="sm" bordered>
+        <Table responsive bordered>
             <thead>
             <tr>
                 <th>Название</th>
