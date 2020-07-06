@@ -15,14 +15,13 @@
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>1.8</java.version>
-<!--        <start-class>com.stepanov.smetaserver.SmetaserverApplication</start-class>-->
         <frontend-src-dir>src/main/myfrontend/smetaclient</frontend-src-dir>
         <project-build-directory>target</project-build-directory>
         <output-src-dir>target/classes/static</output-src-dir>
         <node.version>v13.12.0</node.version>
         <npm.version>6.14.4</npm.version>
         <frontend-maven-plugin.version>1.9.1</frontend-maven-plugin.version>
-        <bootstrap.version>4.3.1</bootstrap.version>
+        <bootstrap.version>4.5.0</bootstrap.version>
         <jquery.version>3.4.1</jquery.version>
     </properties>
 
@@ -79,6 +78,18 @@
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
             <version>4.1.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>bootstrap</artifactId>
+            <version>${bootstrap.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.webjars.bower</groupId>
+            <artifactId>jquery</artifactId>
+            <version>${jquery.version}</version>
         </dependency>
 
         <dependency>
