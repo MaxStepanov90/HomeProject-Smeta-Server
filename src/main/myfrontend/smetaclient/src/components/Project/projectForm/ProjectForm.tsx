@@ -10,6 +10,7 @@ import Form from 'react-bootstrap/Form';
 import Container from "react-bootstrap/Container";
 import Card from 'react-bootstrap/Card';
 import Button from "react-bootstrap/Button";
+import 'react-datepicker/dist/react-datepicker.css';
 
 interface RouterProps {
     id: string;
@@ -55,7 +56,7 @@ const ProjectForm: React.FC<ProjectFormProps> = ({history}) => {
         <Form.Group className="col-sm-12 col-md-4 col-lg-4 col-xl-4" controlId="formGridProjectContract">
             <Form.Label>Договор</Form.Label>
             <Form.Control required autoComplete="off"
-                          type="test" name="projectContract"
+                          type="text" name="projectContract"
                           value={projectContract} onChange={e => setProjectContract(e.target.value)}
             />
         </Form.Group>
@@ -63,7 +64,7 @@ const ProjectForm: React.FC<ProjectFormProps> = ({history}) => {
         <Form.Group className="col-sm-12 col-md-6 col-lg-6 col-xl-6" controlId="formGridProjectName">
             <Form.Label>Название проекта</Form.Label>
             <Form.Control required autoComplete="off"
-                          type="test" name="projectName"
+                          type="text" name="projectName"
                           value={projectName} onChange={e => setProjectName(e.target.value)}
             />
         </Form.Group>
@@ -71,17 +72,20 @@ const ProjectForm: React.FC<ProjectFormProps> = ({history}) => {
         <Form.Group className="col-sm-12 col-md-6 col-lg-6 col-xl-6" controlId="formGridProjectAddress">
             <Form.Label>Адрес объекта</Form.Label>
             <Form.Control required autoComplete="off"
-                          type="test" name="projectAddress"
+                          type="text" name="projectAddress"
                           value={projectAddress} onChange={e => setProjectAddress(e.target.value)}
             />
         </Form.Group>
     const projectCreationDateInputField =
         <Form.Group className="col-sm-12 col-md-4 col-lg-4 col-xl-4" controlId="formGridProjectCreationDate">
             <Form.Label>Дата создания договора</Form.Label>
-            <Form.Control required autoComplete="off"
-                          type="test" name="projectCreationDate"
-                          value={projectCreationDate} onChange={e => setProjectCreationDate(e.target.value)}
-            />
+            <Form.Control
+                required autoComplete="off"
+                type="date" name="projectCreationDate"
+                value={projectCreationDate} onChange={e => setProjectCreationDate(e.target.value)}
+            >
+            </Form.Control>
+
         </Form.Group>
     const projectOwnerInputField =
         <Form.Group className="col-sm-12 col-md-4 col-lg-4 col-xl-4" controlId="formGridProjectOwner">
