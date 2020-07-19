@@ -75,7 +75,7 @@ export function saveNewEstimate(estimate: INewEstimate) {
             const headers = new Headers();
             headers.append('Content-Type', 'application/json');
             await fetch("/estimates", {
-                method: 'PUT',
+                method: 'POST',
                 body: JSON.stringify(estimate),
                 headers
             })

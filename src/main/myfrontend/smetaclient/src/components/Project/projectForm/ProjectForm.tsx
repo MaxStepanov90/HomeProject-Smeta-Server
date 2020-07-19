@@ -26,31 +26,46 @@ const ProjectForm: React.FC<ProjectFormProps> = ({history}) => {
     const show = useSelector((state: IRootState) => state.app.show)
     const messageText = useSelector((state: IRootState) => state.app.messageText)
     const messageType = useSelector((state: IRootState) => state.app.messageType)
-    const [projectContract,setProjectContract] = useState('')
-    const [projectName,setProjectName] = useState('')
-    const [projectAddress,setProjectAddress] = useState('')
-    const [projectCreationDate,setProjectCreationDate] = useState('')
-    const [projectDescription,setProjectDescription] = useState('')
-    const [projectOwner,setProjectOwner] = useState('')
+    const [projectContract, setProjectContract] = useState('')
+    const [projectName, setProjectName] = useState('')
+    const [projectAddress, setProjectAddress] = useState('')
+    const [projectCreationDate, setProjectCreationDate] = useState('')
+    const [projectDescription, setProjectDescription] = useState('')
+    const [projectOwner, setProjectOwner] = useState('')
+    const [projectNameError, setProjectNameError] = useState('')
 
     const submitProject = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const newProject = {
-            contract: projectContract,
-            name: projectName,
-            address: projectAddress,
-            creationDate: projectCreationDate,
-            description: projectDescription,
-            owner: projectOwner
-        };
-        console.log(newProject)
-        dispatch(saveNewProject(newProject));
-        setTimeout(() => projectList(), 1600);
+        const isValid = validate()
+        console.log(isValid)
+        if (!isValid){
+            const newProject = {
+                contract: projectContract,
+                name: projectName,
+                address: projectAddress,
+                creationDate: projectCreationDate,
+                description: projectDescription,
+                owner: projectOwner
+            };
+            dispatch(saveNewProject(newProject));
+            setTimeout(() => projectList(), 1600);
+        }
     }
 
     const projectList = (): void => {
         return history.push("/projects")
     };
+    const validate = () => {
+        let projectNameError = ""
+        if (!projectName) {
+            projectNameError = "Название проекта не должно быть пустым"
+        }
+        if (projectNameError) {
+            setProjectNameError(projectNameError);
+            return true
+        }
+        return false;
+    }
 
     const projectContractInputField =
         <Form.Group className="col-sm-12 col-md-4 col-lg-4 col-xl-4" controlId="formGridProjectContract">
@@ -64,6 +79,7 @@ const ProjectForm: React.FC<ProjectFormProps> = ({history}) => {
         <Form.Group className="col-sm-12 col-md-6 col-lg-6 col-xl-6" controlId="formGridProjectName">
             <Form.Label>Название проекта</Form.Label>
             <Form.Control required autoComplete="off"
+                          isInvalid={false}
                           type="text" name="projectName"
                           value={projectName} onChange={e => setProjectName(e.target.value)}
             />
@@ -120,8 +136,8 @@ const ProjectForm: React.FC<ProjectFormProps> = ({history}) => {
                             {projectCreationDateInputField}
                             {projectOwnerInputField}
                         </Form.Row>
-
                         <Form.Row>
+                            <div style={{fontSize: 12, color: "red"}}>{projectNameError}</div>
                             {projectNameInputField}
                             {projectAddressInputField}
                         </Form.Row>
