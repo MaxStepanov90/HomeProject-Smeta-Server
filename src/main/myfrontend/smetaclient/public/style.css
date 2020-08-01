@@ -1,0 +1,29 @@
+/* Виджет назначает height: 100% , что может привести к непредксказуемому результату, если вы этого не планровали */
+
+html {
+    height: auto !important;
+}
+
+ /*Фиксируем позицию body, которую меняет панель гугла */
+
+body {
+    top: 0 !important;
+    position: static !important;
+    min-height: 100vh !important;
+}
+
+/* Прячем панель гугла */
+
+.skiptranslate {
+    display: none !important;
+}
+.language__item {
+    margin: 2px;
+    cursor: pointer;
+    opacity: .5;
+}
+
+.language__item:hover,
+.language__item_active {
+    /*opacity: 1;*/
+}
